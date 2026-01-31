@@ -36,6 +36,7 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownLocked, setIsDropdownLocked] = useState(false);
+  const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
 
   // ============================================
   // THEME TOGGLE EFFECT
@@ -537,7 +538,7 @@ export default function Navbar() {
 
           {/* Mobile Controls - Right Side (Hamburger + Theme) */}
           <div className="lg:hidden ">
-            {/* Theme Toggle on Mobile */}
+           
            
 
             {/* Mobile Menu Button - Hamburger */}
@@ -566,7 +567,11 @@ export default function Navbar() {
           opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
         }}
-        onClick={() => setIsOpen(false)}
+        onClick={(e) => {
+          if (e.target === mobileMenuRef.current) {
+            setIsOpen(false);
+          }
+        }}
       >
         {/* Menu Content */}
         <div className="h-full flex flex-col px-6 pt-6 pb-12" onClick={(e) => e.stopPropagation()}>
@@ -595,7 +600,7 @@ export default function Navbar() {
             
             {/* More Item */}
             <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              onClick={() => setIsMobileMoreOpen(!isMobileMoreOpen)}
               className="flex items-baseline gap-6 group w-full text-left cursor-pointer transition-all"
               style={{
                 color: 'var(--bg)',
@@ -612,7 +617,7 @@ export default function Navbar() {
             </button>
 
             {/* More Dropdown */}
-            {isDropdownOpen && (
+            {isMobileMoreOpen && (
               <div className="pl-20 space-y-3">
                 {MORE_ITEMS.map((item) => {
                   if (item.isThemeToggle) {
