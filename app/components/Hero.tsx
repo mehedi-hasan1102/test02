@@ -8,8 +8,6 @@ export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLButtonElement>(null);
-  const orbitsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Animate hero on mount
@@ -50,34 +48,6 @@ export default function Hero() {
           0.4
         );
       }
-
-      // Animate CTA with bounce
-      if (ctaRef.current) {
-        tl.from(
-          ctaRef.current,
-          {
-            opacity: 0,
-            y: 40,
-            scale: 0.8,
-            duration: 0.7,
-            ease: 'elastic.out(1, 0.5)',
-          },
-          0.9
-        );
-      }
-
-      // Animate orbits
-      if (orbitsRef.current) {
-        const orbits = orbitsRef.current.querySelectorAll('[data-orbit]');
-        orbits.forEach((orbit, i) => {
-          gsap.to(orbit, {
-            rotation: 360,
-            duration: 15 + i * 3,
-            repeat: -1,
-            ease: 'none',
-          });
-        });
-      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -89,48 +59,6 @@ export default function Hero() {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{ background: 'var(--bg)' }}
     >
-      {/* Animated orbital background */}
-      <div
-        ref={orbitsRef}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        {/* Outer orbit */}
-        <div
-          data-orbit
-          className="absolute w-96 h-96 border border-opacity-20 rounded-full"
-          style={{ borderColor: 'var(--accent)' }}
-        >
-          <div
-            className="absolute top-0 left-1/2 w-3 h-3 rounded-full -translate-x-1/2 -translate-y-1/2"
-            style={{ background: 'var(--accent)' }}
-          />
-        </div>
-
-        {/* Mid orbit */}
-        <div
-          data-orbit
-          className="absolute w-64 h-64 border border-opacity-20 rounded-full"
-          style={{ borderColor: 'var(--accent)', animationDirection: 'reverse' }}
-        >
-          <div
-            className="absolute bottom-0 right-0 w-2 h-2 rounded-full translate-x-1/2 translate-y-1/2"
-            style={{ background: 'var(--accent)', opacity: 0.6 }}
-          />
-        </div>
-
-        {/* Inner orbit */}
-        <div
-          data-orbit
-          className="absolute w-32 h-32 border border-opacity-30 rounded-full"
-          style={{ borderColor: 'var(--accent)' }}
-        >
-          <div
-            className="absolute top-0 right-0 w-1.5 h-1.5 rounded-full translate-x-1/2 -translate-y-1/2"
-            style={{ background: 'var(--accent)' }}
-          />
-        </div>
-      </div>
-
       {/* Animated gradient blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -154,76 +82,29 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto text-center">
           <div
             ref={titleRef}
-            className="mb-8"
+            className="mb-6 md:mb-8 flex flex-col"
             style={{ color: 'var(--text)' }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-2 tracking-tighter">Creative Developer</h1>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter" style={{ 
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-2 tracking-tight uppercase leading-none">
+              FULL-STACK
+            </h1>
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight uppercase leading-none" style={{ 
               color: 'var(--accent)',
-              background: 'linear-gradient(135deg, var(--accent), #06b6d4)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>& Motion Designer</h1>
+            }}>
+              DEVELOPER
+            </h1>
           </div>
 
           <div
             ref={descRef}
-            className="text-lg md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto"
+            className="text-base md:text-lg mb-12 leading-relaxed max-w-2xl mx-auto"
             style={{ color: 'var(--text-secondary)' }}
           >
-            <p>
-              Crafting digital experiences with intentional motion, performance-focused design, and storytelling. Award-nominated for creative work at Awwwards and GSAP Showcase.
-            </p>
-          </div>
-
-          <div className="flex gap-4 justify-center flex-wrap">
-            <button
-              ref={ctaRef}
-              className="group px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-110 active:scale-95 relative overflow-hidden"
-              style={{
-                background: 'var(--accent)',
-                color: 'var(--bg)',
-              }}
-              onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, {
-                  boxShadow: '0 20px 40px rgba(34, 211, 238, 0.4)',
-                  duration: 0.3,
-                });
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.currentTarget, {
-                  boxShadow: '0 0px 0px rgba(34, 211, 238, 0)',
-                  duration: 0.3,
-                });
-              }}
-            >
-              <span className="relative z-10">View My Work</span>
-            </button>
-            <button
-              className="px-8 py-4 rounded-lg font-semibold border-2 transition-all duration-300 hover:scale-105 active:scale-95"
-              style={{
-                borderColor: 'var(--accent)',
-                color: 'var(--accent)',
-              }}
-              onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, {
-                  background: 'rgba(34, 211, 238, 0.1)',
-                  duration: 0.3,
-                });
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.currentTarget, {
-                  background: 'transparent',
-                  duration: 0.3,
-                });
-              }}
-            >
-              Get in Touch
-            </button>
+            
           </div>
 
           {/* Scroll indicator with animation */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer group" onClick={() => {
+          <div className="absolute -bottom-64 left-1/2 transform -translate-x-1/2 cursor-pointer group" onClick={() => {
             const aboutSection = document.getElementById('about');
             if (aboutSection) {
               aboutSection.scrollIntoView({ behavior: 'smooth' });
