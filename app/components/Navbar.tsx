@@ -283,6 +283,14 @@ export default function Navbar() {
               color: 'var(--accent)',
               letterSpacing: '0.05em',
               transition: 'transform 0.3s ease, background 0.3s ease',
+
+
+ 
+            
+            
+
+
+
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(34, 211, 238, 0.15)';
