@@ -97,7 +97,7 @@ export default function About() {
               ref={headingRef}
               style={{ color: 'var(--text)' }}
             >
-              <h2 className={styles.aboutHeading}>About Me</h2>
+              <h2 className={styles.aboutHeading}>About <span style={{ color: 'var(--accent)' }}>Me</span></h2>
             </div>
             {[
               "I am a MERN Stack Developer from Bangladesh with 2 years of programming experience, building personal and practice-based web applications using modern JavaScript technologies",

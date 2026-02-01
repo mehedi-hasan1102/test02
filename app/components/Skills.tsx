@@ -343,7 +343,7 @@ export default function Skills() {
         {/* Section Header */}
         <div ref={headerRef} className={styles.skillsHeader}>
           <h2 className={styles.skillsTitle}>
-            MY <span className="text-accent">TOOLKIT</span>
+            MY <span style={{ color: 'var(--accent)' }}>TOOLKIT</span>
           </h2>
         </div>
 
