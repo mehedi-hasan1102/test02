@@ -103,9 +103,9 @@ export default function About() {
               }} />
             </div>
             {[
-              "I'm a passionate full-stack developer and creative technologist specializing in building immersive web experiences with GSAP animations and modern web technologies. My mission is to bridge the gap between design and functionality, creating interfaces that not only look stunning but perform flawlessly.",
-              "I leverage GSAP to craft premium animations and interactions that elevate user experiences. From timeline-driven sequences to scroll-triggered effects, I bring motion design principles into interactive digital products with precision and performance in mind.",
-              "My development approach emphasizes performance optimization, accessibility, and clean code architecture. I'm constantly exploring cutting-edge web technologies, contributing to the developer community, and showcasing what's possible when creativity meets technical excellence.",
+              "I’m a MERN Stack Developer from Bangladesh with 1–2 years of programming experience, building scalable and user-friendly web applications.",
+              "I focus on clean code, performance, and modern web technologies across the full stack.",
+              "I also write technical blogs and speak at developer meetups, continuously learning and growing as a developer.",
             ].map((text, index) => (
               <div
                 key={index}
