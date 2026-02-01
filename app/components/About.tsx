@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
@@ -90,25 +91,37 @@ export default function About() {
 
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left side - Heading with accent */}
-          <div>
-            <div
-              ref={headingRef}
-              style={{ color: 'var(--text)' }}
-            >
-              <h2 className="text-5xl font-bold mb-4">About My Journey</h2>
-              <div className="w-16 h-1 rounded-full mb-8" style={{
-                background: 'linear-gradient(90deg, var(--accent), transparent)',
-              }} />
+          {/* Left side - Profile Image */}
+          <div className="flex justify-center md:justify-start">
+            <div className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl" style={{
+              border: '2px solid var(--accent)',
+              boxShadow: '0 0 40px rgba(34, 211, 238, 0.2)',
+            }}>
+              <Image
+                src="/profile/profile - blue.png"
+                alt="Profile"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
 
           {/* Right side - Content with enhanced typography */}
           <div className="space-y-6">
+            <div
+              ref={headingRef}
+              style={{ color: 'var(--text)' }}
+            >
+              <h2 className="text-5xl font-bold mb-4">About Me</h2>
+              <div className="w-16 h-1 rounded-full mb-8" style={{
+                background: 'linear-gradient(90deg, var(--accent), transparent)',
+              }} />
+            </div>
             {[
-              "I'm a creative developer obsessed with crafting beautiful digital experiences that merge motion design with purposeful interactivity. For the past 5 years, I've been pushing the boundaries of what's possible on the web.",
-              "My work focuses on performance-first design, smooth animations, and creating moments of delight. I believe motion should tell stories, not distract from them.",
-              "When I'm not designing or coding, I'm exploring new animation techniques, contributing to open-source projects, or writing about web performance and creative development.",
+              "I'm a passionate full-stack developer and creative technologist specializing in building immersive web experiences with GSAP animations and modern web technologies. My mission is to bridge the gap between design and functionality, creating interfaces that not only look stunning but perform flawlessly.",
+              "I leverage GSAP to craft premium animations and interactions that elevate user experiences. From timeline-driven sequences to scroll-triggered effects, I bring motion design principles into interactive digital products with precision and performance in mind.",
+              "My development approach emphasizes performance optimization, accessibility, and clean code architecture. I'm constantly exploring cutting-edge web technologies, contributing to the developer community, and showcasing what's possible when creativity meets technical excellence.",
             ].map((text, index) => (
               <div
                 key={index}
@@ -135,9 +148,9 @@ export default function About() {
           style={{ borderTop: '1px solid rgba(34, 211, 238, 0.2)' }}
         >
           {[
-            { number: '50+', label: 'Projects Completed' },
-            { number: '15+', label: 'Clients Worldwide' },
-            { number: '8', label: 'Awards & Recognition' },
+            { number: '100+', label: 'Web Projects' },
+            { number: '50+', label: 'GSAP Animations' },
+            { number: '5+', label: 'Years Experience' },
           ].map((stat, index) => (
             <div
               key={index}
