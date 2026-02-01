@@ -113,7 +113,7 @@ export default function ProjectDetails() {
           Project Not Found
         </h1>
         <p style={{ color: 'var(--text-secondary)' }} className="mb-8">
-          The project you're looking for doesn't exist.
+          The project you&#39;re looking for doesn&#39;t exist.
         </p>
         <Link
           href="#works"
@@ -359,7 +359,7 @@ export default function ProjectDetails() {
             Interested in working together?
           </h2>
           <p style={{ color: 'var(--text-secondary)' }} className="text-lg mb-8">
-            Let's build something amazing together!
+            Let&#39;s build something amazing together!
           </p>
           <Link
             href="#contact"
