@@ -279,13 +279,7 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={scrollToTop}
-            className="flex text-lg md:text-xl font-bold hover:scale-110 active:scale-95 flex-shrink-0 px-4 py-2 rounded-full transition-all"
-            style={{
-              background: 'rgba(34, 211, 238, 0.1)',
-              color: 'var(--accent)',
-              letterSpacing: '0.05em',
-              transition: 'transform 0.3s ease, background 0.3s ease',
-            }}
+            className={styles.logo}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(34, 211, 238, 0.15)';
             }}
@@ -318,13 +312,7 @@ export default function Navbar() {
                 href={link.href}
                 onMouseEnter={handleLinkHover}
                 onMouseLeave={handleLinkHoverEnd}
-                className="relative font-medium text-sm cursor-pointer whitespace-nowrap transition-colors"
-                style={{
-                  color: 'var(--text)',
-                  letterSpacing: '0.025em',
-                  textTransform: 'uppercase',
-                  transition: 'color 0.3s ease',
-                }}
+                className={styles.navLink}
               >
                 {link.label}
                 {/* Underline that grows from left */}
@@ -352,12 +340,9 @@ export default function Navbar() {
     type="button"
     aria-haspopup="true"
     aria-expanded={isDropdownOpen}
-    className="relative font-medium text-sm flex items-center gap-1 hover:scale-105 transition-transform whitespace-nowrap"
+    className={styles.dropdownTrigger}
     style={{
       color: isDropdownOpen ? 'var(--accent)' : 'var(--text)',
-      letterSpacing: '0.025em',
-      textTransform: 'uppercase',
-      transition: 'color 0.3s ease, transform 0.2s ease',
     }}
     onClick={toggleDropdownLock}
     onFocus={openDropdown}
@@ -410,13 +395,7 @@ export default function Navbar() {
               setIsDropdownOpen(false);
               setIsDropdownLocked(false);
             }}
-            className="w-full text-left block px-4 py-3 text-sm transition-all duration-300 hover:pl-5 cursor-pointer"
-            style={{
-              color: 'var(--text)',
-              borderTop: '1px solid rgba(34, 211, 238, 0.1)',
-              background: 'transparent',
-              border: 'none',
-            }}
+            className={styles.dropdownItem}
             onMouseEnter={(e) => {
               gsap.to(e.currentTarget, {
                 background: 'rgba(34, 211, 238, 0.1)',
@@ -444,14 +423,7 @@ export default function Navbar() {
           href={item.href || '#'}
           role="menuitem"
           tabIndex={isDropdownOpen ? 0 : -1}
-          className="block px-4 py-3 text-sm transition-all duration-300 hover:pl-5 cursor-pointer"
-          style={{
-            color: 'var(--text)',
-            borderBottom:
-              idx < MORE_ITEMS.length - 1
-                ? '1px solid rgba(34, 211, 238, 0.1)'
-                : 'none',
-          }}
+          className={styles.dropdownItem}
           onClick={() => {
             // Close dropdown and unlock when clicking a menu item
             setIsDropdownOpen(false);
@@ -490,11 +462,7 @@ export default function Navbar() {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-5 py-1.5 rounded-full font-semibold transition-all duration-300 hover:scale-105 active:scale-95 text-sm whitespace-nowrap"
-              style={{
-                background: 'var(--accent)',
-                color: 'var(--bg)',
-              }}
+              className={styles.ctaButton}
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   boxShadow: '0 8px 20px rgba(34, 211, 238, 0.4)',

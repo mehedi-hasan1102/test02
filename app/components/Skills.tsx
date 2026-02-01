@@ -321,7 +321,6 @@ export default function Skills() {
       <div className={styles.skillsContainer}>
         {/* Section Header */}
         <div ref={headerRef} className={styles.skillsHeader}>
-          <span className={styles.skillsLabel}>WHAT I WORK WITH</span>
           <h2 className={styles.skillsTitle}>
             MY <span className="text-accent">TOOLKIT</span>
           </h2>

@@ -1,5 +1,7 @@
 /* About Component Styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .about {
   padding: 6rem 0;
   position: relative;
@@ -58,20 +60,17 @@
 
 .aboutHeading {
   color: var(--text);
+  font-family: 'Staatliches', serif;
+  font-size: 3.125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
 }
 
 .aboutHeadingTitle {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 700;
   margin-bottom: 1rem;
-}
-
-.aboutHeadingLine {
-  width: 4rem;
-  height: 0.25rem;
-  border-radius: 9999px;
-  margin-bottom: 2rem;
-  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .aboutBody {

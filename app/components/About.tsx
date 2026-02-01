@@ -97,10 +97,7 @@ export default function About() {
               ref={headingRef}
               style={{ color: 'var(--text)' }}
             >
-              <h2 className="text-5xl font-bold mb-4">About Me</h2>
-              <div className="w-16 h-1 rounded-full mb-8" style={{
-                background: 'linear-gradient(90deg, var(--accent), transparent)',
-              }} />
+              <h2 className={styles.aboutHeading}>About Me</h2>
             </div>
             {[
               "I am a MERN Stack Developer from Bangladesh with 2 years of programming experience, building personal and practice-based web applications using modern JavaScript technologies",
