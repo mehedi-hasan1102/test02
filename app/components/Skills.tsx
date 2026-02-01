@@ -38,10 +38,8 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Node.js", icon: "⬢", color: "#339933" },
       { name: "Express", icon: "Ex", color: "#ffffff" },
-      
       { name: "REST API", icon: "{ }", color: "#06B6D4" },
       { name: "GraphQL", icon: "◈", color: "#E10098" },
-      
     ],
   },
   {
@@ -51,7 +49,6 @@ const skillCategories: SkillCategory[] = [
       { name: "MongoDB", icon: "🍃", color: "#47A248" },
       { name: "PostgreSQL", icon: "🐘", color: "#4169E1" },
       { name: "MySQL", icon: "🐬", color: "#4479A1" },
-     
       { name: "Firebase", icon: "🔥", color: "#FFCA28" },
     ],
   },
@@ -60,7 +57,6 @@ const skillCategories: SkillCategory[] = [
     description: "Development & deployment",
     skills: [
       { name: "Git", icon: "⎇", color: "#F05032" },
-      
       { name: "Linux", icon: "🐧", color: "#FCC624" },
       { name: "Figma", icon: "◐", color: "#F24E1E" },
       { name: "VS Code", icon: "◆", color: "#007ACC" },
