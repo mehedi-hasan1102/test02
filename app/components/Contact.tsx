@@ -3,14 +3,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import SplitType from 'split-type';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiDownload } from 'react-icons/fi';
 import styles from './contact.module.css';
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLButtonElement>(null);
-  const emailRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -35,133 +33,87 @@ export default function Contact() {
           });
         }
       }
-
-      // Hover animation for CTA button
-      const button = ctaRef.current;
-      if (button) {
-        const tl = gsap.timeline({ paused: true });
-
-        const icon = button.querySelector('[data-icon]');
-        if (icon) {
-          tl.to(icon, {
-            x: 5,
-            duration: 0.3,
-          });
-
-          button.addEventListener('mouseenter', () => tl.play());
-          button.addEventListener('mouseleave', () => tl.reverse());
-
-          return () => {
-            button.removeEventListener('mouseenter', () => tl.play());
-            button.removeEventListener('mouseleave', () => tl.reverse());
-          };
-        }
-      }
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  const socials = [
+    { label: 'GitHub', href: 'https://github.com' },
+    { label: 'Twitter', href: 'https://twitter.com' },
+    { label: 'LinkedIn', href: 'https://linkedin.com' },
+  ];
+
   return (
     <section
       id="contact"
       ref={sectionRef}
-      className="section-padding relative overflow-hidden"
+      className={`relative overflow-hidden py-20 md:py-32 px-4 md:px-8 ${styles.contactSection}`}
       style={{ background: 'var(--bg)' }}
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-5"
-          style={{
-            background: 'var(--accent)',
-            filter: 'blur(100px)',
-          }}
-        />
-      </div>
+      {/* Background Gradient Orbs */}
+      <div className={styles.contactDecor1} />
+      <div className={styles.contactDecor2} />
 
-      <div className="container relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Heading */}
-          <div
-            ref={headingRef}
-            className="mb-8"
-            style={{ color: 'var(--text)' }}
-          >
-            <h2>Let&apos;s Create Something Amazing</h2>
-          </div>
+      <div className="container relative z-10 max-w-7xl">
+        {/* Main Heading */}
+        <div ref={headingRef} className={styles.footerHeading}>
+          LET&apos;S TALK
+        </div>
 
-          {/* Subheading */}
-          <p
-            className="text-xl mb-12 leading-relaxed"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            I&apos;m always interested in hearing about new projects and opportunities
-            to create award-worthy experiences. Feel free to reach out if you
-            have something in mind.
-          </p>
+        {/* Email */}
+        <a
+          href="mailto:mehedi.hasani1o23@gmail.com"
+          className={styles.emailDisplay}
+        >
+          mehedi.hasani1o23@gmail.com
+        </a>
 
-          {/* Email Link */}
-          <div className="mb-12">
-            <a
-              ref={emailRef}
-              href="mailto:contact@example.com"
-              className="text-3xl md:text-4xl font-bold hover:underline transition-all"
-              style={{ color: 'var(--accent)' }}
-            >
-              hello@example.com
-            </a>
-          </div>
-
-          {/* CTA Button */}
-          <button
-            ref={ctaRef}
-            className="px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center gap-3"
-            style={{
-              background: 'var(--accent)',
-              color: 'var(--bg)',
-            }}
-          >
-            Send Me a Message
-            <FiArrowRight
-              data-icon
-              className="transition-transform"
-              size={20}
-            />
-          </button>
-
-          {/* Social Links */}
-          <div className="mt-16 pt-16 border-t border-[var(--surface)]">
-            <p
-              className="text-sm mb-6"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Also find me on
-            </p>
-            <div className="flex gap-6 justify-center">
-              {['Twitter', 'LinkedIn', 'GitHub', 'CodePen'].map((social) => (
+        {/* Content Grid */}
+        <div className={styles.footerGrid}>
+          {/* Socials */}
+          <div className={styles.footerColumn}>
+            <p className={styles.columnLabel}>SOCIALS</p>
+            <div className={styles.socialButtons}>
+              {socials.map((social) => (
                 <a
-                  key={social}
-                  href="#"
-                  className="font-semibold transition-all hover:scale-110"
-                  style={{ color: 'var(--accent)' }}
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
                 >
-                  {social}
+                  {social.label}
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Footer */}
-          <div
-            className="mt-16 pt-8 border-t border-[var(--surface)] text-sm"
-            style={{ color: 'var(--text-secondary)' }}
-          >
-            <p>
-              © 2026 Mehedi Hasan. Crafted with creativity and GSAP. All rights
-              reserved.
-            </p>
+          {/* Location */}
+          <div className={styles.footerColumn}>
+            <p className={styles.columnLabel}>LOCATION</p>
+            <div className={styles.locationInfo}>
+              <p className={styles.locationCity}>DHAKA</p>
+              <p className={styles.locationCountry}>BANGLADESH</p>
+            </div>
           </div>
+
+          {/* Availability */}
+          <div className={styles.footerColumn}>
+            <p className={styles.columnLabel}>AVAILABILITY</p>
+            <div className={styles.availabilityStatus}>
+              <span className={styles.availabilityDot} />
+              <span className={styles.availabilityText}>OPEN FOR OPPORTUNITIES</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Download CV Button */}
+        <div className={styles.downloadSection}>
+          <a href="/cv.pdf" download className={styles.downloadButton}>
+            DOWNLOAD CV
+            <FiDownload size={20} />
+          </a>
         </div>
       </div>
     </section>
