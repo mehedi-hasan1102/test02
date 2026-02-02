@@ -20,7 +20,7 @@ const NAV_LINKS = [
 
 // Dropdown menu items
 const MORE_ITEMS = [
-  // { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Dashboard', href: '/dashboard' },
   // { label: 'Spotify', href: '/spotify' },
   // { label: 'Feedback', href: '/feedback' },
   // { label: 'Snippets', href: '/snippets' },
