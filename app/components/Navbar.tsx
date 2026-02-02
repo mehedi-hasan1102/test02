@@ -505,7 +505,7 @@ export default function Navbar() {
               }}
             >
               <FiMessageCircle size={18} />
-              Let's Talk
+              Let&apos;s Talk
             </button>
 
             {/* Theme Toggle on Mobile Only */}
