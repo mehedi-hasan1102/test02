@@ -132,9 +132,7 @@
 }
 
 .timelineCard:hover {
-  border-color: rgba(6, 182, 212, 0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(6, 182, 212, 0.4);
 }
 
 .timelineCard::before {
