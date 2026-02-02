@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./projects.module.css";
@@ -88,6 +89,20 @@ const ProjectCard = ({
         onMouseMove={handleMouseMove}
       >
         <div ref={glowRef} className={styles.projectGlow} />
+        
+        {/* Project Image */}
+        <div className={styles.projectImageContainer}>
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className={styles.projectImage}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={index < 3}
+          />
+          <div className={styles.projectImageOverlay} />
+        </div>
+        
         <div ref={contentRef} className={styles.projectContent}>
           <div className={styles.projectHeader}>
             <span className={styles.projectNumber}>{String(index + 1).padStart(2, "0")}</span>
