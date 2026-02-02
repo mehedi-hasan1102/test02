@@ -14,10 +14,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
-    phone: '',
-    subject: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -82,7 +79,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
       // Success
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setFormData({ email: '', message: '' });
 
       // Close modal after 2 seconds
       setTimeout(() => {
@@ -118,24 +115,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         </button>
 
         {/* Heading */}
-        <h2 className={styles.modalHeading}>Book a Call</h2>
+        <h2 className={styles.modalHeading}>Get in Touch</h2>
         <p className={styles.modalSubheading}>
-          Let&apos;s discuss your project and how I can help
+          I&apos;m open to job opportunities and collaborations. Let&apos;s connect!
         </p>
 
         {/* Form Fields */}
-        <div className={styles.formGroup}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-            className={styles.input}
-          />
-        </div>
-
         <div className={styles.formGroup}>
           <input
             type="email"
@@ -149,32 +134,9 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         </div>
 
         <div className={styles.formGroup}>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number (Optional)"
-            value={formData.phone}
-            onChange={handleInputChange}
-            className={styles.input}
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleInputChange}
-            required
-            className={styles.input}
-          />
-        </div>
-
-        <div className={styles.formGroup}>
           <textarea
             name="message"
-            placeholder="Tell me about your project..."
+            placeholder="Tell me about the opportunity or just say hi..."
             value={formData.message}
             onChange={handleInputChange}
             required
