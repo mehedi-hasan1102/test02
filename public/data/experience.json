@@ -18,48 +18,16 @@
   {
     "id": 2,
     "type": "education",
-    "title": "B.Sc in Computer Science",
-    "company": "University/Institute Name",
+    "title": "B.Sc in Physics",
+    "company": "National University",
     "location": "Bangladesh",
-    "period": "2022 - Present",
-    "description": "Pursuing degree in Computer Science with focus on Web Development.",
+    "period": "2018 - 2026",
+    "description": "Bachelor of Science degree in Physics with self-taught expertise in web development.",
     "achievements": [
-      "Completed coursework in Data Structures and Algorithms",
-      "Developed projects in Web Development and Mobile Apps",
-      "Active member of coding community"
+      "Strong foundation in mathematics, analytical thinking, and problem-solving",
+      "Applied programming skills to develop web applications as a complementary skill",
+      "Bridged physics knowledge with modern web technologies"
     ],
-    "tech": ["JavaScript", "Python", "Data Structures", "Web Development"]
-  },
-  {
-    "id": 3,
-    "type": "work",
-    "title": "Freelance Web Developer",
-    "company": "Freelance",
-    "location": "Remote",
-    "period": "2023 - 2024",
-    "description": "Worked with clients to build custom websites and web applications.",
-    "achievements": [
-      "Successfully delivered 10+ client projects",
-      "Built responsive websites for small businesses",
-      "Implemented e-commerce solutions",
-      "Provided ongoing maintenance and support"
-    ],
-    "tech": ["HTML", "CSS", "JavaScript", "WordPress", "PHP", "MySQL"]
-  },
-  {
-    "id": 4,
-    "type": "education",
-    "title": "Web Development Bootcamp",
-    "company": "Online Learning Platform",
-    "location": "Online",
-    "period": "2023",
-    "description": "Intensive bootcamp covering modern web development technologies.",
-    "achievements": [
-      "Completed 500+ hours of hands-on coding",
-      "Built 20+ projects from scratch",
-      "Learned full-stack development principles",
-      "Earned certification in Web Development"
-    ],
-    "tech": ["HTML5", "CSS3", "JavaScript ES6+", "React", "Node.js", "Express", "MongoDB"]
+    "tech": ["Calculus", "Teamwork", "Critical Thinking"]
   }
 ]
