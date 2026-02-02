@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './experience.module.css';
@@ -19,47 +19,32 @@ interface ExperienceItem {
   tech?: string[];
 }
 
-const experiences: ExperienceItem[] = [
-  {
-    id: 1,
-    type: 'work',
-    title: 'Junior Web Developer (Self-Taught)',
-    company: 'Independent Projects',
-    location: 'Remote',
-    period: '2024 - Present',
-    description: 'Building full-stack web applications with modern technologies.',
-    achievements: [
-      'Developed full-stack applications using React, Next.js and TypeScript',
-      'Implemented RESTful APIs and database integration',
-      'Optimized application performance and user experience',
-      'Deployed applications on Vercel and AWS'
-    ],
-    tech: ['React.js', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'REST APIs', 'Tailwind CSS', 'GSAP']
-  },
-  {
-    id: 2,
-    type: 'education',
-    title: 'B.Sc in Computer Science',
-    company: 'University/Institute Name',
-    location: 'Bangladesh',
-    period: '2022 - Present',
-    description: 'Pursuing degree in Computer Science with focus on Web Development.',
-    achievements: [
-      'Completed coursework in Data Structures and Algorithms',
-      'Developed projects in Web Development and Mobile Apps',
-      'Active member of coding community'
-    ],
-    tech: ['JavaScript', 'Python', 'Data Structures', 'Web Development']
-  },
-];
-
 export default function Experience() {
+  const [experiences, setExperiences] = useState<ExperienceItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const progressFillRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const glowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Load experience data from JSON
+  useEffect(() => {
+    const loadExperiences = async () => {
+      try {
+        const response = await fetch('/data/experience.json');
+        const data = await response.json();
+        setExperiences(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading experience data:', error);
+        setLoading(false);
+      }
+    };
+
+    loadExperiences();
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
     const card = e.currentTarget;
@@ -79,6 +64,9 @@ export default function Experience() {
   };
 
   useEffect(() => {
+    // Don't run animations until data is loaded
+    if (loading || experiences.length === 0) return;
+
     // Animate header
     if (headerRef.current) {
       const children = headerRef.current.children;
@@ -148,7 +136,6 @@ export default function Experience() {
       }
 
       if (content) {
-        const isLeft = item.classList.contains(styles.left);
         tl.to(
           content,
           {
@@ -176,7 +163,7 @@ export default function Experience() {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [loading, experiences]);
 
   return (
     <section ref={sectionRef} className={styles.experienceSection}>
@@ -188,10 +175,15 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Timeline */}
-        <div ref={timelineRef} className={styles.timeline}>
-          <div className={styles.timelineProgressTrack} />
-          <div ref={progressFillRef} className={styles.timelineProgressFill} />
+        {loading ? (
+          <div style={{ textAlign: 'center', padding: '4rem 0', color: 'var(--text-secondary)' }}>
+            Loading experience...
+          </div>
+        ) : (
+          /* Timeline */
+          <div ref={timelineRef} className={styles.timeline}>
+            <div className={styles.timelineProgressTrack} />
+            <div ref={progressFillRef} className={styles.timelineProgressFill} />
 
           {experiences.map((exp, index) => (
             <div
@@ -263,7 +255,8 @@ export default function Experience() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );
