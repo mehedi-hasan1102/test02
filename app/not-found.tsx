@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import gsap from 'gsap';
+import { AiOutlineHome } from 'react-icons/ai';
 import styles from './not-found.module.css';
 
 export default function NotFound() {
@@ -114,9 +115,9 @@ export default function NotFound() {
           </p>
 
           <div ref={buttonRef} className={styles.buttonWrapper}>
-            <Link href="/" className={styles.backButton}>
-              <span className={styles.buttonIcon}>🏠</span>
-              <span className={styles.buttonText}>Back to Home</span>
+            <Link href="/" className="btn-primary">
+              <AiOutlineHome size={20} />
+              <span>Back to Home</span>
             </Link>
           </div>
         </div>
