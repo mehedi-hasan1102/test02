@@ -220,85 +220,6 @@
   margin-top: clamp(2rem, 4vw, 4rem);
 }
 
-/* Download Button */
-.downloadButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.25rem 2.5rem;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-  font-family: 'Staatliches', 'Staatliches Fallback', sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.15em;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  transition: all 0.4s ease;
-  font-weight: 400;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.downloadButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-  z-index: 0;
-}
-
-.downloadButton:hover {
-  color: rgb(255, 255, 255);
-  border-color: var(--accent);
-}
-
-.downloadButton:hover::before {
-  transform: scaleX(1);
-}
-
-:global(.light-mode) .downloadButton {
-  color: var(--text);
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-:global(.light-mode) .downloadButton::before {
-  background: var(--accent);
-}
-
-:global(.light-mode) .downloadButton:hover {
-  color: var(--bg);
-  border-color: var(--accent);
-}
-
-.downloadButton:active {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
-}
-
-.downloadButton svg {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.4s ease;
-}
-
-.downloadButton span {
-  position: relative;
-  z-index: 1;
-}
-
-.downloadButton:hover svg {
-  transform: translateY(3px);
-}
-
 /* Footer Scrolling Text */
 .footerBigTextWrapper {
   background: rgba(6, 182, 212, 0.03);
@@ -483,18 +404,6 @@
   .availabilityText {
     font-size: clamp(0.95rem, 1.3vw, 1.05rem);
   }
-
-  .downloadButton {
-    padding: 1rem 2rem;
-    font-size: 0.9rem;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-
-  .downloadButton svg {
-    width: 18px;
-    height: 18px;
-  }
 }
 
 /* Mobile - 600px and below */
@@ -589,16 +498,6 @@
     margin-top: 2rem;
   }
 
-  .downloadButton {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.8rem;
-    gap: 0.5rem;
-  }
-
-  .downloadButton svg {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 /* Mobile Small - 480px and below */
@@ -685,21 +584,6 @@
     font-size: clamp(0.85rem, 1.1vw, 0.95rem);
     letter-spacing: 0.08em;
   }
-
-  .downloadButton {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.7rem;
-    gap: 0.5rem;
-  }
-
-  .downloadButton:hover {
-    transform: translateY(-4px);
-  }
-
-  .downloadButton svg {
-    width: 14px;
-    height: 14px;
-  }
 }
 
 /* Ultra Small - 360px and below */
@@ -730,15 +614,5 @@
 
   .socialLink {
     font-size: 0.7rem;
-  }
-
-  .downloadButton {
-    padding: 0.625rem 1rem;
-    font-size: 0.65rem;
-  }
-
-  .downloadButton svg {
-    width: 12px;
-    height: 12px;
   }
 }

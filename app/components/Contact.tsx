@@ -134,7 +134,7 @@ export default function Contact() {
 
           {/* Download CV Button */}
           <div className={styles.downloadSection}>
-            <a href="/Resume_of_Mehedi_Hasan.pdf" download className={styles.downloadButton}>
+            <a href="/Resume_of_Mehedi_Hasan.pdf" download className="btn-primary">
               <span>DOWNLOAD CV</span>
               <FiDownload size={20} />
             </a>

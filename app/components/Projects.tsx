@@ -206,7 +206,7 @@ export default function Projects() {
             href="https://github.com/mehedi-hasan1102"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.moreProjectsButton}
+            className="btn-primary"
           >
             <FaGithub size={16} />
             <span>MORE PROJECTS</span>

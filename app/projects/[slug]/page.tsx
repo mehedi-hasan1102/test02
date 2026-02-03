@@ -192,12 +192,12 @@ export default function ProjectDetails() {
 
 
 
-            <div className={styles.heroButtons} data-hero-animate>
+            <div className={styles.heroButtons}>
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.heroDownloadButton}
+                className="btn-primary"
               >
                 <span>LIVE DEMO</span>
                 <FiDownload size={18} aria-hidden="true" />
@@ -207,7 +207,7 @@ export default function ProjectDetails() {
                   href={project.frontendUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.btnSecondary}
+                  className="btn-secondary"
                 >
                   View Code
                 </a>
