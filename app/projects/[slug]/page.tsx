@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import { FiExternalLink } from 'react-icons/fi';
-import '@/app/components/skills.module.css';
 import styles from './projectDetails.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -169,187 +168,188 @@ export default function ProjectDetails() {
   }
 
   return (
-    <div ref={pageRef} className="min-h-screen" style={{ background: 'var(--bg)' }}>
-      {/* Hero Section with Title Overlay */}
+    <div ref={pageRef} className={styles.page}>
+      {/* Back Button */}
+      <div className={styles.backSection}>
+        <button onClick={() => router.back()} className={styles.backLink} data-hero-animate>
+          ← Back to Portfolio
+        </button>
+      </div>
+
+      {/* Hero Section */}
       <section className={styles.heroSection}>
-        <div className={styles.heroBackground} />
-        
-        <div className={styles.heroContent}>
-          {/* Breadcrumb */}
-          <div className={styles.breadcrumb} data-hero-animate>
-            <button onClick={() => router.back()} className={styles.backButton}>
-              <span>← BACK</span>
-            </button>
-            <span style={{ color: 'var(--text-secondary)' }}>/</span>
-            <span className={styles.categoryBadge}>{project.category}</span>
-          </div>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroLeft}>
+            <p className={styles.categoryLabel} data-hero-animate>
+              {project.category}
+            </p>
 
-          <div className={styles.heroTitleSection}>
-            {/* Title with char animation */}
-            <div className={styles.titleWrapper}>
-              <h1 className={styles.heroTitle}>
-                {project.title.split('').map((char, i) => (
-                  <span key={i} className="hero-title-char" style={{ display: 'inline-block' }}>
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                ))}
-              </h1>
-              <p className={styles.heroDescription} data-hero-animate>
-                {project.description}
-              </p>
-            </div>
+            <h1 className={styles.heroTitle}>
+              {project.title.split('').map((char, i) => (
+                <span key={i} className="hero-title-char" style={{ display: 'inline-block' }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </h1>
 
-            {/* Project Meta Info - Right Side */}
-            <div className={styles.projectMeta} data-hero-animate>
-              <div className={styles.metaRow}>
-                <span className={styles.metaLabel}>Status</span>
-                <span className={styles.metaValue}>COMPLETED</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaLabel}>Duration</span>
-                <span className={styles.metaValue}>1 Month</span>
-              </div>
-              <div className={styles.metaRow}>
-                <span className={styles.metaLabel}>Live Website →</span>
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className={styles.metaLink}
-                >
-                  View Site
-                </a>
-              </div>
+            <p className={styles.heroDescription} data-hero-animate>
+              {project.description}
+            </p>
+
+            <div className={styles.heroButtons} data-hero-animate>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btnPrimary}
+              >
+                Live Demo
+              </a>
               {project.frontendUrl && (
-                <div className={styles.metaRow}>
-                  <span className={styles.metaLabel}>Source Code →</span>
-                  <a 
-                    href={project.frontendUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.metaLink}
-                  >
-                    Frontend Code
-                  </a>
-                </div>
+                <a
+                  href={project.frontendUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.btnSecondary}
+                >
+                  View Code
+                </a>
               )}
-              {project.backendUrl && (
-                <div className={styles.metaRow}>
-                  <span className={styles.metaLabel}>Source Code →</span>
-                  <a 
-                    href={project.backendUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.metaLink}
-                  >
-                    Backend Code
-                  </a>
-                </div>
-              )}
-              <div className={styles.metaRow}>
-                <span className={styles.metaLabel}>Role</span>
-                <span className={styles.metaValue}>FULL-STACK DEV</span>
-              </div>
+            </div>
+          </div>
+
+          <div className={styles.heroRight} data-hero-animate>
+            <div className={styles.projectPreview}>
+              <img
+                src={project.image}
+                alt={project.title}
+                className={styles.previewImage}
+                data-parallax-image
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Project Image */}
-      {/* <section className={styles.mainImageSection} data-reveal-section>
-        <div className={styles.imageContainer}>
-          <img
-            src={project.image}
-            alt={project.title}
-            className={styles.projectImage}
-            data-parallax-image
-          />
+      {/* Tech Stack */}
+      <section className={styles.techSection} data-reveal-section>
+        <h2 className={styles.techTitle}>TECH STACK</h2>
+        <div className={styles.techGrid}>
+          {project.tech.map((tech) => (
+            <div key={tech} className={styles.techBadge}>
+              {tech}
+            </div>
+          ))}
         </div>
-      </section> */}
+      </section>
 
-      {/* Project Gallery Grid */}
-      <section className={styles.gallerySection} data-reveal-section>
-        <div className={styles.galleryGrid}>
-          <div className={styles.galleryItem}>
-            <img src={project.image} alt={`${project.title} desktop view`} />
+      {/* Key Features */}
+      <section className={styles.featuresSection} data-reveal-section>
+        <h2 className={styles.sectionTitle}>KEY FEATURES</h2>
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🛒</div>
+            <h3 className={styles.featureTitle}>Smart Cart System</h3>
+            <p className={styles.featureDesc}>
+              Persistent shopping cart with real-time updates, quantity management, and saved items for later.
+            </p>
           </div>
-          <div className={styles.galleryItem}>
-            <img src={project.image} alt={`${project.title} mobile view`} />
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>💳</div>
+            <h3 className={styles.featureTitle}>Secure Payments</h3>
+            <p className={styles.featureDesc}>
+              Integrated Stripe payment processing with support for multiple payment methods and currencies.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>📊</div>
+            <h3 className={styles.featureTitle}>Analytics Dashboard</h3>
+            <p className={styles.featureDesc}>
+              Comprehensive admin dashboard with sales analytics, inventory reporting, and customer insights.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🔐</div>
+            <h3 className={styles.featureTitle}>Auth & Security</h3>
+            <p className={styles.featureDesc}>
+              Robust authentication system with JWT tokens, role-based access control, and data encryption.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>⚡</div>
+            <h3 className={styles.featureTitle}>Lightning Fast</h3>
+            <p className={styles.featureDesc}>
+              Optimized performance with lazy loading, image optimization, and caching for quick response times.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}>🌍</div>
+            <h3 className={styles.featureTitle}>Multi-language</h3>
+            <p className={styles.featureDesc}>
+              Full i18n support with multiple language detection and seamless locale switching.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Challenges Section */}
-      <section className={styles.textSection} data-reveal-section>
-        <div className={styles.textContent}>
-          <h3 className={styles.textLabel}>Challenges.</h3>
-          <div className={styles.textBody}>
-            {project.challenges && project.challenges.length > 0 ? (
-              <p>{project.challenges.join('. ')}</p>
-            ) : (
-              <p>
-                This project presented unique challenges in terms of performance optimization,
-                user experience design, and scalable architecture implementation.
-              </p>
-            )}
+      {/* Screenshots */}
+      <section className={styles.screenshotsSection} data-reveal-section>
+        <h2 className={styles.sectionTitle}>SCREENSHOTS</h2>
+        <div className={styles.screenshotsGrid}>
+          <div className={styles.screenshot}>
+            <img src={project.image} alt={`${project.title} screenshot 1`} />
+          </div>
+          <div className={styles.screenshot}>
+            <img src={project.image} alt={`${project.title} screenshot 2`} />
+          </div>
+          <div className={styles.screenshot}>
+            <img src={project.image} alt={`${project.title} screenshot 3`} />
           </div>
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section className={styles.textSection} data-reveal-section>
-        <div className={styles.textContent}>
-          <h3 className={styles.textLabel}>Solutions.</h3>
-          <div className={styles.textBody}>
-            {project.futurePlans && project.futurePlans.length > 0 ? (
-              <p>{project.futurePlans.join('. ')}</p>
-            ) : (
-              <p>
-                Implemented modern development practices with focus on code quality,
-                performance optimization, and seamless user experience across all devices.
-              </p>
-            )}
+      {/* Challenges & Key Learnings */}
+      <section className={styles.bottomSection} data-reveal-section>
+        <div className={styles.bottomGrid}>
+          <div className={styles.bottomCard}>
+            <div className={styles.cardIcon}>💡</div>
+            <h3 className={styles.cardTitle}>Challenges</h3>
+            <ul className={styles.cardList}>
+              {(project.challenges && project.challenges.length > 0
+                ? project.challenges
+                : [
+                    'Implementing real-time inventory sync across multiple sessions without race conditions',
+                    'Optimizing database queries for large product catalogs with complex filtering',
+                    'Building a flexible cart system that handles promotions, discounts, and tax calculations',
+                    'Ensuring PCI compliance while maintaining a smooth checkout experience',
+                  ]
+              ).map((challenge, index) => (
+                <li key={index} data-challenge-item>
+                  {challenge}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
 
-      {/* Tech Stack / Tools Section */}
-      <section className={styles.toolsSection} data-reveal-section>
-        <div className={styles.textContent}>
-          <h3 className={styles.textLabel}>Tools.</h3>
-          <div className={styles.techStack}>
-            {project.tech && project.tech.length > 0 && project.tech.map((tech) => (
-              <div key={tech} className={styles.techBadge}>
-                {tech}
-              </div>
-            ))}
+          <div className={styles.bottomCard}>
+            <div className={styles.cardIcon}>🎯</div>
+            <h3 className={styles.cardTitle}>Key Learnings</h3>
+            <ul className={styles.cardList}>
+              {(project.futurePlans && project.futurePlans.length > 0
+                ? project.futurePlans
+                : [
+                    'Mastered optimistic UI updates with proper rollback strategies',
+                    'Learned advanced PostgreSQL indexing and query optimization techniques',
+                    'Gained deep understanding of payment processing workflows and security',
+                    'Improved skills in building accessible, responsive e-commerce interfaces',
+                  ]
+              ).map((learning, index) => (
+                <li key={index}>
+                  {learning}
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
-
-      {/* Additional Project Image */}
-      {/* <section className={styles.additionalImageSection} data-reveal-section>
-        <div className={styles.imageContainer}>
-          <img
-            src={project.image}
-            alt={`${project.title} showcase`}
-            className={styles.showcaseImage}
-          />
-        </div>
-      </section> */}
-
-      {/* CTA Buttons Section */}
-      <section className={styles.ctaButtonsSection} data-reveal-section>
-        <div className={styles.buttonGroup}>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.ctaButton}
-          >
-            <span>VISIT LIVE SITE</span>
-            <FiExternalLink size={20} />
-          </a>
         </div>
       </section>
     </div>
