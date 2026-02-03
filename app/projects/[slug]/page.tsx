@@ -180,9 +180,7 @@ export default function ProjectDetails() {
       <section className={styles.heroSection}>
         <div className={styles.heroContainer}>
           <div className={styles.heroLeft}>
-            <p className={styles.categoryLabel} data-hero-animate>
-              {project.category}
-            </p>
+           
 
             <h1 className={styles.heroTitle}>
               {project.title.split('').map((char, i) => (
@@ -191,7 +189,9 @@ export default function ProjectDetails() {
                 </span>
               ))}
             </h1>
-
+ <p className={styles.categoryLabel} data-hero-animate>
+              {project.category}
+            </p>
             <p className={styles.heroDescription} data-hero-animate>
               {project.description}
             </p>
