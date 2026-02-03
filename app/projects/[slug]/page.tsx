@@ -73,49 +73,12 @@ export default function ProjectDetails() {
         ease: 'power4.out',
       });
 
-      // Professional image animations
-      // Initial image reveal with smooth fade and subtle scale
+      // Simple image reveal animation - matching screenshot style
       gsap.from('[data-parallax-image]', {
         opacity: 0,
-        scale: 0.98,
-        duration: 1.5,
-        ease: 'power2.out',
-        delay: 0.2,
-      });
-
-      // Smooth scroll-triggered animation with saturation and subtle lift
-      gsap.to('[data-parallax-image]', {
-        scrollTrigger: {
-          trigger: '[data-parallax-image]',
-          start: 'top 70%',
-          end: 'bottom 30%',
-          scrub: 0.6,
-          markers: false,
-        },
-        filter: 'saturate(1.15) contrast(1.05)',
-        boxShadow: '0 20px 60px rgba(6, 182, 212, 0.15)',
         duration: 1,
+        ease: 'power2.out',
       });
-
-      // Hover-like effect on scroll - smooth transition
-      const imageElement = document.querySelector('[data-parallax-image]') as HTMLElement;
-      if (imageElement) {
-        imageElement.addEventListener('mouseenter', () => {
-          gsap.to('[data-parallax-image]', {
-            filter: 'saturate(1.3) brightness(1.08)',
-            duration: 0.4,
-            ease: 'power2.out',
-          });
-        });
-
-        imageElement.addEventListener('mouseleave', () => {
-          gsap.to('[data-parallax-image]', {
-            filter: 'saturate(1.15) contrast(1.05)',
-            duration: 0.6,
-            ease: 'power2.out',
-          });
-        });
-      }
 
       // Reveal sections with scale
       const sections = gsap.utils.toArray('[data-reveal-section]') as Element[];
