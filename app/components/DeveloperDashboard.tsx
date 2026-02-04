@@ -296,11 +296,7 @@ const DeveloperDashboard = () => {
       <div className={styles.dashboardContainer}>
         {/* Header */}
         <div className={styles.header}>
-          <div style={{ color: '#10b981', marginBottom: '1rem', fontSize: '0.875rem', fontWeight: 500 }}>
-            <span>•</span>
-            <span style={{ marginLeft: '0.5rem' }}>available for work</span>
-          </div>
-          <h1 className={styles.headerTitle} style={{ marginBottom: '0.5rem' }}>
+          <h1 className={styles.headerTitle}>
             Developer <span className={styles.titleAccent}>Dashboard</span>
           </h1>
         </div>
