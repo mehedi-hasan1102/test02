@@ -213,7 +213,7 @@
 }
 
 .projectCategory {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
@@ -222,7 +222,7 @@
 }
 
 .projectDescription {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;

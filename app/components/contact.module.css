@@ -123,7 +123,7 @@
 }
 
 .socialLink {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', monospace;
   font-size: clamp(0.75rem, 1.3vw, 1rem);
   letter-spacing: 0.05em;
   color: var(--text-secondary);
@@ -154,7 +154,7 @@
 }
 
 .locationCountry {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', monospace;
   font-size: clamp(0.7rem, 1vw, 0.875rem);
   letter-spacing: 0.1em;
   color: var(--text-secondary);
@@ -162,7 +162,7 @@
 }
 
 .currentTime {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', monospace;
   font-size: clamp(0.7rem, 1vw, 0.875rem);
   letter-spacing: 0.05em;
   color: var(--accent);

@@ -2,8 +2,8 @@
 /* LOCAL FONTS */
 /* ========================================== */
 @font-face {
-  font-family: 'Geist Mono';
-  src: url('/fonts/Geist_Mono/GeistMono-VariableFont_wght.ttf') format('truetype');
+  font-family: 'Inter';
+  src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
   font-weight: 100 900;
   font-display: swap;
 }
@@ -63,7 +63,7 @@ html {
 }
 
 body {
-  font-family: 'Geist Mono', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
