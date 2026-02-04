@@ -85,6 +85,109 @@ const ProjectCardItem = ({ project }: { project: Project }) => {
   );
 };
 
+// Stats Card Component with Glow Effect
+const StatsCardItem = ({ stats }: { stats: GithubStats }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glowRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(glowRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={`${styles.card} ${styles.statsCard}`}
+      onMouseMove={handleMouseMove}
+    >
+      <div ref={glowRef} className={styles.cardGlow} />
+      <h3 className={styles.sectionTitle} style={{ marginBottom: '1.5rem', position: 'relative', zIndex: 1 }}>
+        <FiGithub /> GitHub Stats
+      </h3>
+      <div className={styles.statsGrid}>
+        <div className={styles.statItem}>
+          <div className={styles.statIcon}>⭐</div>
+          <div className={styles.statValue}>{stats.stars.toLocaleString()}</div>
+          <div className={styles.statLabel}>Stars</div>
+        </div>
+        <div className={styles.statItem}>
+          <div className={styles.statIcon}>🍴</div>
+          <div className={styles.statValue}>{stats.forks}</div>
+          <div className={styles.statLabel}>Forks</div>
+        </div>
+        <div className={styles.statItem}>
+          <div className={styles.statIcon}>👥</div>
+          <div className={styles.statValue}>{stats.followers.toLocaleString()}</div>
+          <div className={styles.statLabel}>Followers</div>
+        </div>
+        <div className={styles.statItem}>
+          <div className={styles.statIcon}>📦</div>
+          <div className={styles.statValue}>{stats.repos}</div>
+          <div className={styles.statLabel}>Repos</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Contributions Card Component with Glow Effect
+const ContributionsCardItem = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glowRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(glowRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={styles.card}
+      onMouseMove={handleMouseMove}
+    >
+      <div ref={glowRef} className={styles.cardGlow} />
+      <div className={styles.sectionHeader} style={{ position: 'relative', zIndex: 1 }}>
+        <h2 className={styles.sectionTitle}>
+          <FiCode /> Contributions
+        </h2>
+        <a href={`https://github.com/mehedi-hasan1102`} target="_blank" rel="noopener noreferrer" className={styles.viewLink}>
+          View on GitHub <span>→</span>
+        </a>
+      </div>
+      <div style={{ width: '100%', overflow: 'auto', marginTop: '1.5rem', position: 'relative', zIndex: 1 }}>
+        <Image
+          src="https://ghchart.rshah.org/22d3ee/mehedi-hasan1102"
+          alt="GitHub contribution graph"
+          width={1200}
+          height={200}
+          style={{ width: '100%', height: 'auto' }}
+          unoptimized
+        />
+      </div>
+    </div>
+  );
+};
+
 const DeveloperDashboard = () => {
   // States
   const [userProfile, setUserProfile] = useState<UserProfile>({
@@ -215,57 +318,12 @@ const DeveloperDashboard = () => {
           </div>
 
           {/* GitHub Stats Card */}
-          <div className={`${styles.card} ${styles.statsCard}`}>
-            <h3 className={styles.sectionTitle} style={{ marginBottom: '1.5rem' }}>
-              <FiGithub /> GitHub Stats
-            </h3>
-            <div className={styles.statsGrid}>
-              <div className={styles.statItem}>
-                <div className={styles.statIcon}>⭐</div>
-                <div className={styles.statValue}>{stats.stars.toLocaleString()}</div>
-                <div className={styles.statLabel}>Stars</div>
-              </div>
-              <div className={styles.statItem}>
-                <div className={styles.statIcon}>🍴</div>
-                <div className={styles.statValue}>{stats.forks}</div>
-                <div className={styles.statLabel}>Forks</div>
-              </div>
-              <div className={styles.statItem}>
-                <div className={styles.statIcon}>👥</div>
-                <div className={styles.statValue}>{stats.followers.toLocaleString()}</div>
-                <div className={styles.statLabel}>Followers</div>
-              </div>
-              <div className={styles.statItem}>
-                <div className={styles.statIcon}>📦</div>
-                <div className={styles.statValue}>{stats.repos}</div>
-                <div className={styles.statLabel}>Repos</div>
-              </div>
-            </div>
-          </div>
+          <StatsCardItem stats={stats} />
         </div>
 
         {/* Contributions Section */}
         <div className={styles.contributionsSection}>
-          <div className={styles.card}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>
-                <FiCode /> Contributions
-              </h2>
-              <a href={`https://github.com/mehedi-hasan1102`} target="_blank" rel="noopener noreferrer" className={styles.viewLink}>
-                View on GitHub <span>→</span>
-              </a>
-            </div>
-            <div style={{ width: '100%', overflow: 'auto', marginTop: '1.5rem' }}>
-              <Image
-                src="https://ghchart.rshah.org/22d3ee/mehedi-hasan1102"
-                alt="GitHub contribution graph"
-                width={1200}
-                height={200}
-                style={{ width: '100%', height: 'auto' }}
-                unoptimized
-              />
-            </div>
-          </div>
+          <ContributionsCardItem />
         </div>
 
         {/* Recent Projects Section */}
