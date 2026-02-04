@@ -3,7 +3,8 @@
 import styles from './dashboard.module.css';
 import Image from 'next/image';
 import { FiGithub, FiStar, FiGitBranch, FiCode } from 'react-icons/fi';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
 
 interface Project {
   id: number;
@@ -38,6 +39,51 @@ interface GithubRepository {
   forks_count: number;
   html_url: string;
 }
+
+// Project Card Component with Glow Effect
+const ProjectCardItem = ({ project }: { project: Project }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glowRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(glowRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={styles.projectCard}
+      onMouseMove={handleMouseMove}
+    >
+      <div ref={glowRef} className={styles.projectGlow} />
+      <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.projectName}>
+        {project.name}
+      </a>
+      <p className={styles.projectDescription}>{project.description}</p>
+      <div className={styles.projectMeta}>
+        <span className={styles.metaItem}>
+          <FiCode size={14} /> {project.language}
+        </span>
+        <span className={styles.metaItem}>
+          <FiStar size={14} /> {project.stars}
+        </span>
+        <span className={styles.metaItem}>
+          <FiGitBranch size={14} /> {project.forks}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const DeveloperDashboard = () => {
   // States
@@ -232,25 +278,7 @@ const DeveloperDashboard = () => {
           </div>
           <div className={styles.projectsGrid}>
             {projects.length > 0 ? (
-              projects.map((project) => (
-                <div key={project.id} className={styles.projectCard}>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.projectName}>
-                    {project.name}
-                  </a>
-                  <p className={styles.projectDescription}>{project.description}</p>
-                  <div className={styles.projectMeta}>
-                    <span className={styles.metaItem}>
-                      <FiCode size={14} /> {project.language}
-                    </span>
-                    <span className={styles.metaItem}>
-                      <FiStar size={14} /> {project.stars}
-                    </span>
-                    <span className={styles.metaItem}>
-                      <FiGitBranch size={14} /> {project.forks}
-                    </span>
-                  </div>
-                </div>
-              ))
+              projects.map((project) => <ProjectCardItem key={project.id} project={project} />)
             ) : (
               <div style={{ gridColumn: '1 / -1', textAlign: 'center', color: 'var(--text-secondary)', padding: '2rem' }}>
                 Loading projects...
