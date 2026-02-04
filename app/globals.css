@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* ========================================== */
+/* LOCAL FONTS */
+/* ========================================== */
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/Geist_Mono/GeistMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Staatliches';
+  src: url('/fonts/Staatliches/Staatliches-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 /* ========================================== */
@@ -47,7 +63,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Geist Mono', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   transition: background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
