@@ -1,8 +1,8 @@
 .section {
   position: relative;
-  padding: 1.5rem 0;
-  overflow: hidden;
+  padding: 8.5rem 0;
   background: var(--bg);
+  height: auto;
 }
 
 .marqueeContainer {
@@ -13,9 +13,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(1rem, 1.5vw, 1.5rem) 0;
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
   border-top: 1px solid rgba(34, 211, 238, 0.15);
   border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+  transform: skewY(-8deg);
 }
 
 /* SINGLE HORIZONTAL TRACK */
@@ -33,7 +34,7 @@
   gap: 0;
   white-space: nowrap;
   width: max-content;
-  animation: scrollText 30s linear infinite;
+  animation: scrollText 50s linear infinite;
 }
 
 /* HIDDEN SECOND TRACK */
@@ -83,7 +84,7 @@
 }
 
 .itemRow:hover .icon {
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.15);
   color: var(--accent);
 }
 
@@ -128,7 +129,7 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .section {
-    padding: 1.2rem 0;
+    padding: 6rem 0;
   }
 
   .marqueeContainer {
@@ -143,7 +144,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 1rem 0;
+    padding: 4rem 0;
   }
 
   .marqueeContainer {
@@ -167,7 +168,7 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 0.8rem 0;
+    padding: 3rem 0;
   }
 
   .marqueeContainer {
