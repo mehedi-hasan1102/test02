@@ -412,6 +412,45 @@ const ContributionsCardItem = () => {
   );
 };
 
+// Playlist Card Component with Glow Effect
+const PlaylistCardItem = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || !glowRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    gsap.to(glowRef.current, {
+      x: x,
+      y: y,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={`${styles.card} ${styles.playlistCard}`}
+      onMouseMove={handleMouseMove}
+    >
+      <div ref={glowRef} className={styles.cardGlow} />
+      <iframe
+        className={styles.playlistEmbed}
+        src="https://open.spotify.com/embed/playlist/19V2ZdQ8FFZbw7Xu00Eoii?utm_source=generator&theme=0"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        title="Spotify playlist"
+        style={{ position: 'relative', zIndex: 1 }}
+      ></iframe>
+    </div>
+  );
+};
+
 const DeveloperDashboard = () => {
   // States
   const [userProfile, setUserProfile] = useState<UserProfile>({
@@ -549,16 +588,7 @@ const DeveloperDashboard = () => {
             <h2 className={styles.sectionTitle}>🎵 My Playlist</h2>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>What I listen to while coding</span>
           </div>
-          <div className={`${styles.card} ${styles.playlistCard}`}>
-            <iframe
-              className={styles.playlistEmbed}
-              src="https://open.spotify.com/embed/playlist/19V2ZdQ8FFZbw7Xu00Eoii?utm_source=generator&theme=0"
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              title="Spotify playlist"
-            ></iframe>
-          </div>
+          <PlaylistCardItem />
         </div>
       </div>
     </div>
