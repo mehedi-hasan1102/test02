@@ -583,13 +583,15 @@ const DeveloperDashboard = () => {
         </div>
 
         {/* Spotify Section */}
-        <div className={styles.playlistSection}>
+
+
+        {/* <div className={styles.playlistSection}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>🎵 My Playlist</h2>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>What I listen to while coding</span>
           </div>
           <PlaylistCardItem />
-        </div>
+        </div> */}
       </div>
     </div>
   );
