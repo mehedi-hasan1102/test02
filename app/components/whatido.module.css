@@ -1,0 +1,272 @@
+/* ============================================
+   WHAT I DO SECTION - Matching Skills Design
+   ============================================ */
+
+.whatidoSection {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+/* Gradient Orbs */
+.whatidoOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.whatidoOrb1 {
+  top: 10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%);
+}
+
+.whatidoOrb2 {
+  top: 50%;
+  right: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%);
+}
+
+.whatidoOrb3 {
+  bottom: 0;
+  left: 30%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%);
+}
+
+.whatidoContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.whatidoHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+  overflow: hidden;
+}
+
+.whatidoTitle {
+  font-family: 'Staatliches', serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.whatidoSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+/* Bento Grid */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+/* Bento Card */
+.bentoCard {
+  position: relative;
+  background: transparent;
+  border-radius: 24px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.bentoCard::before {
+  display: none;
+}
+
+.bentoCard::after {
+  display: none;
+}
+
+/* Mouse following glow */
+.bentoGlow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bentoCard:hover .bentoGlow {
+  opacity: 1;
+}
+
+.bentoContent {
+  position: relative;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  min-height: 250px;
+}
+
+.bentoHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.bentoNumber {
+  font-family: 'Staatliches', serif;
+  font-size: 3rem;
+  color: rgba(6, 182, 212, 0.08);
+  line-height: 1;
+}
+
+.bentoTitle {
+  font-family: 'Staatliches', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.bentoDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.bentoBorder {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(6, 182, 212, 0.1);
+  border-radius: 24px;
+  pointer-events: none;
+  transition: border-color 0.4s ease;
+}
+
+.bentoCard:hover .bentoBorder {
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .whatidoContainer {
+    padding: 0 2rem;
+  }
+
+  .whatidoTitle {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+
+  .whatidoSubtitle {
+    font-size: 1rem;
+  }
+
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bentoCard {
+    min-height: 200px;
+  }
+
+  .bentoContent {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  .bentoNumber {
+    font-size: 2.5rem;
+  }
+
+  .bentoTitle {
+    font-size: 1.25rem;
+  }
+
+  .bentoDescription {
+    font-size: 0.85rem;
+  }
+
+  .whatidoSection {
+    padding: 4rem 0;
+  }
+
+  .whatidoHeader {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatidoContainer {
+    padding: 0 1rem;
+  }
+
+  .whatidoTitle {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .whatidoSubtitle {
+    font-size: 0.95rem;
+  }
+
+  .bentoCard {
+    min-height: 180px;
+  }
+
+  .bentoContent {
+    padding: 1rem;
+  }
+
+  .bentoNumber {
+    font-size: 2rem;
+  }
+
+  .bentoTitle {
+    font-size: 1rem;
+  }
+
+  .bentoDescription {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .bentoHeader {
+    gap: 0.5rem;
+  }
+}
