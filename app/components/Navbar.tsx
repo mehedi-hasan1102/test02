@@ -13,7 +13,7 @@ import styles from './navbar.module.css';
 // Navigation links
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
+  // { label: 'About', href: '/about' },
   { label: 'Portfolyio', href: '/portfolyio' },
   { label: 'Blog', href: '/blog' },
 ];
