@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { FiMenu, FiX, FiMessageCircle } from 'react-icons/fi';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import BookingModal from './BookingModal';
+import { useTheme } from '../../lib/useTheme';
 import styles from './navbar.module.css';
 
 // Navigation links
@@ -34,42 +35,17 @@ export default function Navbar() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const themeInitRef = useRef(false);
+  
+  const { isDark, toggleTheme: handleToggleTheme, isLoading: isThemeLoading } = useTheme();
   
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDark, setIsDark] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownLocked, setIsDropdownLocked] = useState(false);
   const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // ============================================
-  // THEME TOGGLE EFFECT
-  // ============================================
-  const toggleTheme = () => {
-    const newIsDark = !isDark;
-    setIsDark(newIsDark);
-
-    // Animate theme toggle button
-    const button = document.querySelector('[data-theme-toggle-btn]');
-    if (button) {
-      gsap.to(button, {
-        rotation: 360,
-        duration: 0.6,
-        ease: 'expo.out',
-      });
-    }
-
-    // Update HTML class
-    if (newIsDark) {
-      document.documentElement.classList.remove('light-mode');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-    }
-  };
+  // Theme toggle now handled by useTheme hook
 
   // ============================================
   // NAVBAR ALWAYS VISIBLE (FIXED)
@@ -101,25 +77,6 @@ export default function Navbar() {
         duration: 0.8,
         ease: 'expo.out',
       });
-    }
-  }, []);
-
-  // ============================================
-  // LOAD SAVED THEME (without setState)
-  // ============================================
-  useLayoutEffect(() => {
-    if (themeInitRef.current) return;
-    themeInitRef.current = true;
-
-    const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDark(false);
-      document.documentElement.classList.add('light-mode');
-    } else if (saved === 'dark') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDark(true);
-      document.documentElement.classList.remove('light-mode');
     }
   }, []);
 
@@ -409,7 +366,7 @@ export default function Navbar() {
           <button
             key="theme-toggle"
             onClick={() => {
-              toggleTheme();
+              handleToggleTheme();
               setIsDropdownOpen(false);
               setIsDropdownLocked(false);
             }}
@@ -515,7 +472,7 @@ export default function Navbar() {
             {/* Theme Toggle on Mobile Only */}
             <button
               data-theme-toggle-mobile
-              onClick={toggleTheme}
+              onClick={handleToggleTheme}
               className="p-2 rounded-lg lg:hidden"
               style={{
                 background: 'rgba(34, 211, 238, 0.1)',
@@ -663,7 +620,7 @@ export default function Navbar() {
                       <button
                         key="theme-toggle-mobile"
                         onClick={() => {
-                          toggleTheme();
+                          handleToggleTheme();
                         }}
                         className="text-lg  font-bold block hover:scale-105 cursor-pointer transition-transform origin-left"
                         style={{
