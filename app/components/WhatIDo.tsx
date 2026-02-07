@@ -10,39 +10,39 @@ gsap.registerPlugin(ScrollTrigger);
 interface Service {
   title: string;
   description: string;
-  number: number;
+  number: string;
 }
 
 const services: Service[] = [
   {
     title: 'Web Development',
     description: 'Creating responsive, modern websites with React, Next.js, and TypeScript.',
-    number: 1,
+    number: '01',
   },
   {
     title: 'UI/UX Design',
     description: 'Designing beautiful interfaces with Figma and Tailwind CSS with smooth animations.',
-    number: 2,
+    number: '02',
   },
   {
     title: 'Backend Development',
     description: 'Building scalable server-side solutions with Node.js, Express, and databases.',
-    number: 3,
+    number: '03',
   },
   {
     title: 'Full Stack Solutions',
     description: 'End-to-end development from frontend to backend with deployment on modern tools.',
-    number: 4,
+    number: '04',
   },
   {
     title: 'Performance Optimization',
     description: 'Optimizing applications for speed, SEO, and user experience with best practices.',
-    number: 5,
+    number: '05',
   },
   {
     title: 'Problem Solving',
     description: 'Tackling complex challenges with creative solutions and implementing best practices.',
-    number: 6,
+    number: '06',
   },
 ];
 
