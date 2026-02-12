@@ -42,6 +42,7 @@
   --accent: var(--accent-primary);
   --text: var(--text-primary);
   --text-secondary: var(--text-muted);
+  --accent-rgb: 34, 211, 238;
   --bg-rgb: 11, 14, 15;
 }
 
@@ -51,6 +52,7 @@ html.light-mode {
   --accent: var(--accent-primary-light);
   --text: var(--text-dark);
   --text-secondary: #6B7280;
+  --accent-rgb: 37, 99, 235;
   --bg-rgb: 255, 255, 255;
 }
 
@@ -121,6 +123,25 @@ body {
 
 .section-padding {
   padding: 6rem 0;
+}
+
+.sectionTitleGlobal {
+  font-family: 'Staatliches', serif;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--text);
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .sectionTitleGlobal {
+    font-size: clamp(2.1rem, 7.5vw, 3.2rem);
+    letter-spacing: 0.015em;
+  }
 }
 
 @media (max-width: 768px) {

@@ -34,15 +34,6 @@
   overflow: hidden;
 }
 
-.whatidoTitle {
-  font-family: 'Staatliches', serif;
-  font-size: clamp(4rem, 10vw, 8rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 1rem;
-}
 
 .whatidoSubtitle {
   font-size: 1.25rem;
@@ -165,9 +156,6 @@
     padding: 0 2rem;
   }
 
-  .whatidoTitle {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-  }
 
   .whatidoSubtitle {
     font-size: 1rem;
@@ -213,9 +201,6 @@
     padding: 0 1rem;
   }
 
-  .whatidoTitle {
-    font-size: clamp(2rem, 6vw, 3rem);
-  }
 
   .whatidoSubtitle {
     font-size: 0.95rem;

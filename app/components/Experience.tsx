@@ -276,7 +276,7 @@ export default function Experience() {
       <div className={styles.container}>
         {/* Header */}
         <div ref={headerRef} className={styles.header}>
-          <h2 className={styles.title}>
+          <h2 className="sectionTitleGlobal">
             EXPERIENCE & <span style={{ color: 'var(--accent)' }}>EDUCATION</span>
           </h2>
         </div>

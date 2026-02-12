@@ -24,14 +24,6 @@
   overflow: hidden;
 }
 
-.certificatesTitle {
-  font-family: "Staatliches", serif;
-  font-size: clamp(4rem, 10vw, 8rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  color: var(--text);
-}
 
 .certificatesGrid {
   display: grid;

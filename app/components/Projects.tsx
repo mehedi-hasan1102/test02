@@ -185,7 +185,7 @@ export default function Projects() {
       <div className={styles.projectsContainer}>
         {/* Section Header */}
         <div ref={headerRef} className={styles.projectsHeader}>
-          <h2 className={styles.projectsTitle}>
+          <h2 className="sectionTitleGlobal">
             Featured <span style={{ color: "var(--accent)" }}>PROJECTS</span>
           </h2>
         </div>

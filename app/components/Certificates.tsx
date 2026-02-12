@@ -205,7 +205,7 @@ export default function Certificates() {
     >
       <div className={styles.certificatesContainer}>
         <div ref={headerRef} className={styles.certificatesHeader}>
-          <h2 className={styles.certificatesTitle}>
+          <h2 className="sectionTitleGlobal">
             Career <span style={{ color: "var(--accent)" }}>Certifications</span>
           </h2>
         </div>

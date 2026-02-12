@@ -405,7 +405,7 @@ export default function Skills() {
       <div className={styles.skillsContainer}>
         {/* Section Header */}
         <div ref={headerRef} className={styles.skillsHeader}>
-          <h2 className={styles.skillsTitle}>
+          <h2 className="sectionTitleGlobal">
             MY <span style={{ color: 'var(--accent)' }}>TOOLKIT</span>
           </h2>
         </div>

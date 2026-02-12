@@ -171,7 +171,7 @@ export default function WhatIDo() {
       <div className={styles.whatidoContainer}>
         {/* Section Header */}
         <div ref={headerRef} className={styles.whatidoHeader}>
-          <h2 className={styles.whatidoTitle}>
+          <h2 className="sectionTitleGlobal">
             WHAT <span style={{ color: 'var(--accent)' }}>I DO</span>
           </h2>
         </div>

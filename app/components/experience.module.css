@@ -16,16 +16,6 @@
   text-align: center;
 }
 
-.title {
-  font-family: 'Staatliches', serif;
-  font-size: clamp(4rem, 10vw, 8rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  margin-bottom: 1rem;
-  color: var(--text);
-  transition: color 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
 
 .subtitle {
   font-size: 1.125rem;

@@ -125,10 +125,10 @@ export default function About() {
      
 
       <div className="container relative z-10">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left side - Profile Image */}
           <div className="flex justify-center md:justify-start">
-            <div className="relative w-80 h-96">
+            <div className={`${styles.profileWrap} relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-96`}>
               <div 
                 ref={profileImageRef}
                 className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
@@ -150,6 +150,7 @@ export default function About() {
           <div className="space-y-6">
             <div
               ref={headingRef}
+              className={styles.aboutHeadingWrap}
               style={{ color: 'var(--text)' }}
             >
               <h2 className={styles.aboutHeading}>About <span style={{ color: 'var(--accent)' }}>Me</span></h2>
@@ -161,49 +162,35 @@ export default function About() {
               className="text-lg leading-relaxed"
               style={{ color: 'var(--text-secondary)' }}
             >
-              <p>
-                I am a{' '}
-                <span 
-                  style={{ 
-                    background: 'var(--accent)',
-                    color: 'var(--bg)',
-                    padding: '0.2rem 0.6rem',
-                    borderRadius: '0.25rem',
-                    fontWeight: '600',
-                  }}
-                >
-                  MERN Stack Developer
-                </span>
-                {' '}from{' '}
-                <span 
-                  style={{ 
-                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                    color: 'white',
-                    padding: '0.2rem 0.6rem',
-                    borderRadius: '0.25rem',
-                    fontWeight: '600',
-                  }}
-                >
-                  Bangladesh
-                </span>
-                {' '}with 2 years of programming experience, building personal and practice-based web applications using modern JavaScript technologies
-              </p>
+              <ul className={`${styles.aboutList} list-disc pl-5 space-y-4`}>
+                <li>
+                  <strong className={styles.aboutLabel}>NAME:</strong>{' '}
+                  <span className={styles.aboutValueStrong}>Mehedi Hasan</span>
+                </li>
+                <li>
+                  <strong className={styles.aboutLabel}>LOCATION:</strong>{' '}
+                  <span className={`${styles.aboutValueStrong} ${styles.aboutValuePillGreen}`}>
+                    Dhaka, Bangladesh
+                  </span>
+                </li>
+                <li>
+                  <strong className={styles.aboutLabel}>EXPERIENCE:</strong>{' '}
+                  <span className={styles.aboutValueStrong}>
+                    Passionate Software Developer with 2+ years of experience building personal and open-source projects. Experienced in designing, developing, and deploying applications independently
+                  </span>
+                </li>
+                <li className={styles.aboutNoWrapRow}>
+                  <strong className={styles.aboutLabel}>CORE TECH STACK:</strong>{' '}
+                  <span className={`${styles.aboutValueStrong} ${styles.aboutValuePill}`}>
+                    React, Next.js, TypeScript, Tailwind CSS
+                  </span>
+                </li>
+                <li>
+                  <strong className={styles.aboutLabel}>HOBBIES:</strong>{' '}
+                  <span className={styles.aboutValueStrong}>Reading, watching movies, and traveling</span>
+                </li>
+              </ul>
             </div>
-            {[
-              "I focus on clean code, performance, and modern web technologies across the full stack.",
-              "I also write technical blogs and speak at developer meetups, continuously learning and growing as a developer.",
-            ].map((text, index) => (
-              <div
-                key={index + 1}
-                ref={(el) => {
-                  if (el) paragraphsRef.current[index + 1] = el;
-                }}
-                className="text-lg leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                <p>{text}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

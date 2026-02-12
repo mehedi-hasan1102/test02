@@ -188,7 +188,7 @@ export default function PortfolioPage() {
       <div className={styles.projectsContainer}>
         {/* Section Header */}
         <div ref={headerRef} className={styles.projectsHeader}>
-          <h2 className={styles.projectsTitle}>
+          <h2 className="sectionTitleGlobal">
             All My <span style={{ color: "var(--accent)" }}>PROJECTS</span>
           </h2>
         </div>
