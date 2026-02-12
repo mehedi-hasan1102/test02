@@ -3,6 +3,7 @@ import "./globals.css";
 // import ThemeToggle from "./components/ThemeToggle";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
+import InfiniteMarquee from "./components/InfiniteMarquee";
 
 export const metadata: Metadata = {
   title: "Mehedi Hasan | Developer, Storyteller & Technical Writer",
@@ -22,6 +23,7 @@ export default function RootLayout({
         {/* <ThemeToggle /> */}
         {children}
         <Contact />
+        <InfiniteMarquee />
       </body>
     </html>
   );

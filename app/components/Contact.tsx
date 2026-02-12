@@ -143,7 +143,7 @@ export default function Contact() {
       </section>
 
       {/* Footer Scrolling Text */}
-      <div className={styles.footerBigTextWrapper}>
+      {/* <div className={styles.footerBigTextWrapper}>
         <div className={styles.bigTextScroll}>
           <span>
             HIRE ME • OPEN FOR OPPORTUNITIES • LET&apos;S BUILD SOMETHING GREAT •
@@ -152,7 +152,7 @@ export default function Contact() {
             HIRE ME • OPEN FOR OPPORTUNITIES • LET&apos;S BUILD SOMETHING GREAT •
           </span>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
