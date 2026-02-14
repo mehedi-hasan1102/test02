@@ -81,12 +81,13 @@
   overflow-wrap: anywhere;
 }
 
-.aboutNoWrapRow {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: baseline;
-  gap: 0.4rem;
-  white-space: nowrap;
+  .aboutNoWrapRow {
+    display: list-item;
+    list-style-type: disc;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    gap: 0.4rem;
+    white-space: nowrap;
 }
 
 .profileWrap {
