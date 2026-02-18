@@ -271,6 +271,8 @@ export default function Navbar() {
               {isDark ? <FaSun size={16} /> : <FaMoon size={16} />}
             </button>
 
+ <div className="h-6 w-px bg-[rgba(34,211,238,0.2)]" />
+
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
               return (
