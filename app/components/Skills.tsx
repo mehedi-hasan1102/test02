@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "./skills.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -143,11 +142,13 @@ const MagneticSkillTag = ({
   return (
     <div
       ref={tagRef}
-      className={styles.magneticSkillTag}
+      className="relative inline-flex cursor-pointer items-center gap-2 overflow-hidden rounded-[8px] border border-[rgba(6,182,212,0.15)] bg-[rgba(6,182,212,0.05)] px-4 py-[0.625rem] transition-all duration-300 [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] will-change-transform hover:bg-[rgba(6,182,212,0.08)]"
       style={{ "--skill-color": skill.color } as React.CSSProperties}
     >
-      <span className={styles.skillTagIcon}>{skill.icon}</span>
-      <span className={styles.skillTagName}>{skill.name}</span>
+      <span className="text-base opacity-80">{skill.icon}</span>
+      <span className="font-['Staatliches',serif] text-[0.8125rem] tracking-[0.1em] text-[var(--text)]">
+        {skill.name}
+      </span>
     </div>
   );
 };
@@ -221,26 +222,46 @@ const BentoCard = ({
     });
   };
 
+  const cardPositionClass =
+    index === 0
+      ? "col-[1/2] row-[1/2] max-[768px]:col-[1/2] max-[768px]:row-auto"
+      : index === 1
+        ? "col-[2/3] row-[1/2] max-[768px]:col-[1/2] max-[768px]:row-auto"
+        : index === 2
+          ? "col-[1/2] row-[2/3] max-[768px]:col-[1/2] max-[768px]:row-auto"
+          : index === 3
+            ? "col-[2/3] row-[2/3] max-[768px]:col-[1/2] max-[768px]:row-auto"
+            : "";
+
   return (
     <div
       ref={cardRef}
-      className={`${styles.bentoCard} ${isLarge ? styles.bentoCardLarge : ""}`}
+      className={`group relative overflow-hidden rounded-[24px] border border-[rgba(6,182,212,0.1)] bg-transparent [perspective:1000px] [transform-style:preserve-3d] transition-all duration-[400ms] [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] will-change-transform ${cardPositionClass} ${isLarge ? "col-span-1" : ""}`}
       onMouseMove={handleMouseMove}
     >
-      <div ref={glowRef} className={styles.bentoGlow} />
-      <div ref={contentRef} className={styles.bentoContent}>
-        <div className={styles.bentoHeader}>
-          <span className={styles.bentoNumber}>{String(index + 1).padStart(2, "0")}</span>
-          <h3 className={styles.bentoTitle}>{category.title}</h3>
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute left-0 top-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.15),transparent_60%)] opacity-0 blur-[20px] [mix-blend-mode:screen] transition-opacity duration-300 [transition-timing-function:ease] will-change-transform group-hover:opacity-100"
+      />
+      <div ref={contentRef} className="relative z-[2] flex h-full flex-col p-8 max-[768px]:p-6">
+        <div className="mb-3 flex items-center gap-4">
+          <span className="font-['Staatliches',serif] text-[3rem] leading-none text-[rgba(6,182,212,0.08)] max-[768px]:text-[2rem]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="font-['Staatliches',serif] text-[1.5rem] tracking-[0.15em] text-[var(--accent)] max-[768px]:text-[1.25rem]">
+            {category.title}
+          </h3>
         </div>
-        <p className={styles.bentoDescription}>{category.description}</p>
-        <div className={styles.bentoSkills}>
+        <p className="mb-6 font-['Inter',sans-serif] text-[0.875rem] leading-[1.5] text-[var(--text-secondary)]">
+          {category.description}
+        </p>
+        <div className="mt-auto flex flex-wrap gap-[0.625rem]">
           {category.skills.map((skill, skillIndex) => (
             <MagneticSkillTag key={skill.name} skill={skill} index={skillIndex} />
           ))}
         </div>
       </div>
-      <div className={styles.bentoBorder} />
+      <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-[rgba(6,182,212,0.1)] transition-colors duration-[400ms] [transition-timing-function:ease] group-hover:border-[rgba(6,182,212,0.4)]" />
     </div>
   );
 };
@@ -271,12 +292,14 @@ const OrbitingSkill = ({ skill, index, total }: { skill: string; index: number; 
   return (
     <div
       ref={skillRef}
-      className={styles.orbitingSkill}
+      className="absolute left-1/2 top-1/2 mt-[-15px] ml-[-50px] w-[100px] text-center"
       style={{
         transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
       }}
     >
-      <span>{skill}</span>
+      <span className="inline-block whitespace-nowrap rounded-[6px] border border-[rgba(6,182,212,0.2)] bg-[rgba(6,182,212,0.1)] px-3 py-2 font-['Staatliches',serif] text-[0.6875rem] tracking-[0.15em] text-[var(--text)] max-[768px]:px-2 max-[768px]:py-1.5 max-[768px]:text-[0.5625rem]">
+        {skill}
+      </span>
     </div>
   );
 };
@@ -396,22 +419,27 @@ export default function Skills() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.skillsSection} id="skills">
+    <section
+      ref={sectionRef}
+      id="skills"
+      className="relative min-h-screen overflow-hidden py-32 max-[768px]:py-20"
+      style={{ background: "var(--bg)" }}
+    >
       {loading && <SkillsSkeleton />}
       {!loading && (
         <>
         
 
-      <div className={styles.skillsContainer}>
+      <div className="relative z-[2] mx-auto max-w-[1400px] px-16 max-[768px]:px-6">
         {/* Section Header */}
-        <div ref={headerRef} className={styles.skillsHeader}>
+        <div ref={headerRef} className="mb-20 overflow-hidden text-center">
           <h2 className="sectionTitleGlobal">
             MY <span style={{ color: 'var(--accent)' }}>TOOLKIT</span>
           </h2>
         </div>
 
         {/* Bento Grid */}
-        <div className={styles.bentoGrid}>
+        <div className="mb-16 grid grid-cols-3 grid-rows-2 gap-6 max-[1200px]:grid-cols-2 max-[1200px]:grid-rows-3 max-[768px]:grid-flow-row max-[768px]:grid-cols-1 max-[768px]:grid-rows-none max-[768px]:gap-4">
           {skillCategories.map((category, index) => (
             <BentoCard
               key={category.title}
@@ -424,12 +452,15 @@ export default function Skills() {
           {/* Center Orbit Card */}
           <div 
             ref={orbitCardRef}
-            className={styles.bentoOrbitCard}
+            className="group relative col-[3/4] row-[1/3] flex min-h-[400px] items-center justify-center overflow-hidden rounded-[24px] border border-[rgba(6,182,212,0.1)] bg-transparent [perspective:1000px] [transform-style:preserve-3d] transition-all duration-[400ms] [transition-timing-function:cubic-bezier(0.34,1.56,0.64,1)] will-change-transform max-[1200px]:col-[1/3] max-[1200px]:row-[3/4] max-[1200px]:min-h-[350px] max-[768px]:col-[1/-1] max-[768px]:row-auto max-[768px]:min-h-[300px]"
             onMouseMove={handleOrbitMouseMove}
           >
-            <div ref={orbitGlowRef} className={styles.bentoGlow} />
-            <div className={styles.orbitWrapper}>
-              <div ref={orbitContainerRef} className={styles.orbitContainer}>
+            <div
+              ref={orbitGlowRef}
+              className="pointer-events-none absolute left-0 top-0 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(6,182,212,0.15),transparent_60%)] opacity-0 blur-[20px] [mix-blend-mode:screen] transition-opacity duration-300 [transition-timing-function:ease] will-change-transform group-hover:opacity-100"
+            />
+            <div className="relative flex h-[320px] w-[320px] items-center justify-center max-[768px]:h-[260px] max-[768px]:w-[260px]">
+              <div ref={orbitContainerRef} className="absolute h-full w-full">
                 {orbitSkills.map((skill, index) => (
                   <OrbitingSkill
                     key={skill}
@@ -439,14 +470,18 @@ export default function Skills() {
                   />
                 ))}
               </div>
-              <div className={styles.orbitCenter}>
-                <span className={styles.orbitText}>SOFT</span>
-                <span className={styles.orbitTextAccent}>SKILLS</span>
+              <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center">
+                <span className="block font-['Staatliches',serif] text-[1.25rem] tracking-[0.2em] text-[var(--text-secondary)]">
+                  SOFT
+                </span>
+                <span className="block font-['Staatliches',serif] text-[1.75rem] tracking-[0.15em] text-[var(--accent)]">
+                  SKILLS
+                </span>
               </div>
-              <div className={styles.orbitRing} />
-              <div className={`${styles.orbitRing} ${styles.orbitRing2}`} />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(6,182,212,0.2)] max-[768px]:h-[220px] max-[768px]:w-[220px]" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(6,182,212,0.1)] max-[768px]:h-[160px] max-[768px]:w-[160px]" />
             </div>
-            <div className={styles.bentoBorder} />
+            <div className="pointer-events-none absolute inset-0 rounded-[24px] border border-[rgba(6,182,212,0.1)] transition-colors duration-[400ms] [transition-timing-function:ease] group-hover:border-[rgba(6,182,212,0.4)]" />
           </div>
         </div>
 
