@@ -195,7 +195,7 @@
   color: #e5e7eb;
 }
 
-:global(html.light-mode .prose pre code) {
+:global(html.light-mode) .prose pre code {
   color: #1f2937;
 }
 
