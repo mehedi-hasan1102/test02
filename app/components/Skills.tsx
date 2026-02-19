@@ -470,11 +470,11 @@ export default function Skills() {
                   />
                 ))}
               </div>
-              <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center">
-                <span className="block font-['Staatliches',serif] text-[1.25rem] tracking-[0.2em] text-[var(--text-secondary)]">
+              <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center leading-[1]">
+                <span className="block font-['Staatliches',serif] text-[1.5rem] font-semibold tracking-[0.15em] [word-spacing:0em] text-[var(--text-secondary)] max-[768px]:text-[1.25rem]">
                   SOFT
                 </span>
-                <span className="block font-['Staatliches',serif] text-[1.75rem] tracking-[0.15em] text-[var(--accent)]">
+                <span className="block font-['Staatliches',serif] text-[1.5rem] font-semibold tracking-[0.15em] [word-spacing:0em] text-[var(--accent)] max-[768px]:text-[1.25rem]">
                   SKILLS
                 </span>
               </div>
