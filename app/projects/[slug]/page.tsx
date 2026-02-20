@@ -17,6 +17,9 @@ interface Project {
   category: string;
   description: string;
   image: string;
+  screenshot1: string;
+  screenshot2: string;
+  screenshot3: string;
   tech: string[];
   liveUrl: string;
   frontendUrl: string;
@@ -503,13 +506,13 @@ export default function ProjectPage() {
         <h2 className="sectionTitle">SCREENSHOTS</h2>
         <div className="screenshotsGrid">
           <div className="screenshot">
-            <img src={project.image} alt={`${project.title} screenshot 1`} />
+            <img src={project.screenshot1} alt={`${project.title} screenshot 1`} />
           </div>
           <div className="screenshot">
-            <img src={project.image} alt={`${project.title} screenshot 2`} />
+            <img src={project.screenshot2} alt={`${project.title} screenshot 2`} />
           </div>
           <div className="screenshot">
-            <img src={project.image} alt={`${project.title} screenshot 3`} />
+            <img src={project.screenshot3} alt={`${project.title} screenshot 3`} />
           </div>
         </div>
       </section>
