@@ -37,11 +37,12 @@
     "slug": "food-tracker",
     "title": "Food Tracker",
     "category": "FULL-STACK",
-    "description": "A production-ready food management app featuring real-time synchronization, JWT authentication, and optimized performance.",
+    "description": "Food Management is a user-friendly web application designed to help individuals track and organize their food items efficiently. The platform allows users to monitor expiry dates, quantities, and categories of their groceries, making it easier to manage their pantry and reduce food waste. With a simple and intuitive interface, the app aims to make food organization practical, convenient, and enjoyable."
+,
     "image": "/assets/images/projects/food.png",
-    "screenshot1": "/assets/images/projects/food.png",
-    "screenshot2": "/assets/images/projects/food.png",
-    "screenshot3": "/assets/images/projects/food.png",
+    "screenshot1": "/assets/images/projects/food1.png",
+    "screenshot2": "/assets/images/projects/food2.png",
+    "screenshot3": "/assets/images/projects/food3.png",
     "tech": [
       "React",
       "Tailwind CSS",
