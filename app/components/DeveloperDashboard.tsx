@@ -186,28 +186,7 @@ const DashboardSkeleton = () => {
           </div>
         </div>
 
-        {/* Playlist Skeleton */}
-        <div className={CARD}>
-          <div
-            style={{
-              width: '40%',
-              height: '24px',
-              borderRadius: '6px',
-              background: shimmerBg,
-              marginBottom: '1.5rem',
-              animation: 'shimmer 2s infinite',
-            }}
-          />
-          <div
-            style={{
-              width: '100%',
-              height: '352px',
-              borderRadius: '12px',
-              background: shimmerBg,
-              animation: 'shimmer 2s infinite',
-            }}
-          />
-        </div>
+      
       </div>
 
       <style jsx>{`
@@ -428,44 +407,7 @@ const ContributionsCardItem = () => {
   );
 };
 
-// Playlist Card Component with Glow Effect
-const PlaylistCardItem = () => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current || !glowRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    gsap.to(glowRef.current, {
-      x: x,
-      y: y,
-      duration: 0.3,
-      ease: 'power2.out',
-    });
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      className={`${CARD} bg-[rgba(6,182,212,0.03)] after:pointer-events-none after:absolute after:inset-0 after:rounded-[24px] after:border after:border-[rgba(6,182,212,0.18)] after:content-['']`}
-      onMouseMove={handleMouseMove}
-    >
-      <div ref={glowRef} className={CARD_GLOW} />
-      <iframe
-        className="relative z-[1] block h-[352px] w-full border-0"
-        src="https://open.spotify.com/embed/playlist/19V2ZdQ8FFZbw7Xu00Eoii?utm_source=generator&theme=0"
-        allowFullScreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        title="Spotify playlist"
-        style={{ position: 'relative', zIndex: 1 }}
-      ></iframe>
-    </div>
-  );
-};
 
 const DeveloperDashboard = () => {
   // States
@@ -598,16 +540,7 @@ const DeveloperDashboard = () => {
           </div>
         </div>
 
-        {/* Spotify Section */}
-
-
-         <div className="mb-12">
-          <div className={SECTION_HEADER}>
-            <h2 className={SECTION_TITLE}>🎵 My Playlist</h2>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>What I listen to while coding</span>
-          </div>
-          <PlaylistCardItem />
-        </div> 
+       
       </div>
     </div>
   );
