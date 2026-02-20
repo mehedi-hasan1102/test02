@@ -129,9 +129,14 @@ const ProjectCard = ({
           <p className="mb-2 font-['Inter',sans-serif] text-[0.875rem] uppercase tracking-[0.1em] text-[var(--text-secondary)]">
             {project.category}
           </p>
-          <p className="mb-6 flex-1 font-['Inter',sans-serif] text-[0.875rem] leading-[1.5] text-[var(--text-secondary)] max-[1024px]:text-[clamp(0.75rem,1.2vw,0.875rem)] max-[768px]:mb-[clamp(0.75rem,1.5vw,1.5rem)] max-[768px]:text-[clamp(0.7rem,1vw,0.875rem)] max-[480px]:text-[clamp(0.65rem,0.9vw,0.75rem)]">
+          {/* <p className="mb-6 flex-1 font-['Inter',sans-serif] text-[0.875rem] leading-[1.5] text-[var(--text-secondary)] max-[1024px]:text-[clamp(0.75rem,1.2vw,0.875rem)] max-[768px]:mb-[clamp(0.75rem,1.5vw,1.5rem)] max-[768px]:text-[clamp(0.7rem,1vw,0.875rem)] max-[480px]:text-[clamp(0.65rem,0.9vw,0.75rem)]">
             {project.description}
-          </p>
+          </p> */}
+          <p className="mb-6 flex-1 font-['Inter',sans-serif] text-[0.875rem] leading-[1.5] text-[var(--text-secondary)]">
+  {project.description.length > 100
+    ? project.description.slice(0, 100) + '...'
+    : project.description}
+</p>
           <div className="mt-auto flex flex-wrap gap-[0.625rem]">
             {project.tech.map((tag) => (
               <span
