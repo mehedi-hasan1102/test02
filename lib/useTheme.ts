@@ -2,7 +2,6 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { getCookie, setCookie } from './cookies';
 
 export function useTheme() {
   const [isDark, setIsDark] = useState<boolean | null>(null);
@@ -12,10 +11,10 @@ export function useTheme() {
   const updateThemeDOM = (dark: boolean) => {
     if (dark) {
       document.documentElement.classList.remove('light-mode');
-      setCookie('theme', 'dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.add('light-mode');
-      setCookie('theme', 'light');
+      localStorage.setItem('theme', 'light');
     }
   };
 
@@ -24,8 +23,7 @@ export function useTheme() {
     if (themeInitRef.current) return;
     themeInitRef.current = true;
 
-    // Check cookie first, then fall back to system preference
-    const stored = getCookie('theme');
+    const stored = localStorage.getItem('theme');
     let shouldBeDark: boolean;
 
     if (stored === 'light') {

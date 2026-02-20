@@ -94,7 +94,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var m=document.cookie.match(/(?:^|; )theme=([^;]+)/);var t=m?decodeURIComponent(m[1]):'dark';if(t==='light'){document.documentElement.classList.add('light-mode');}else{document.documentElement.classList.remove('light-mode');}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';if(t==='light'){document.documentElement.classList.add('light-mode');}else{document.documentElement.classList.remove('light-mode');}}catch(e){}})();`,
           }}
         />
         <script
