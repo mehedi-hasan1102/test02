@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { FiGithub, FiStar, FiGitBranch, FiCode, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiStar, FiGitBranch, FiCode, FiExternalLink } from 'react-icons/fi'
+import { FaStar, FaCodeBranch, FaUsers, FaBox } from "react-icons/fa";;
+import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 
@@ -333,28 +335,52 @@ const StatsCardItem = ({ stats }: { stats: GithubStats }) => {
       <h3 className={`${SECTION_TITLE} relative z-[1] mb-6`}>
         <FiGithub /> GitHub Stats
       </h3>
-      <div className="grid grid-cols-4 gap-3 max-[768px]:grid-cols-2 max-[640px]:grid-cols-1">
-        <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
-          <div className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]">⭐</div>
-          <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">{stats.stars.toLocaleString()}</div>
-          <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">Stars</div>
-        </div>
-        <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
-          <div className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]">🍴</div>
-          <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">{stats.forks}</div>
-          <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">Forks</div>
-        </div>
-        <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
-          <div className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]">👥</div>
-          <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">{stats.followers.toLocaleString()}</div>
-          <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">Followers</div>
-        </div>
-        <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
-          <div className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]">📦</div>
-          <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">{stats.repos}</div>
-          <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">Repos</div>
-        </div>
-      </div>
+      
+<div className="grid grid-cols-4 gap-3 max-[768px]:grid-cols-2 max-[640px]:grid-cols-1">
+  
+  <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
+    <FaStar className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]" />
+    <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">
+      {stats.stars.toLocaleString()}
+    </div>
+    <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">
+      Stars
+    </div>
+  </div>
+
+  <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
+    <FaCodeBranch className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]" />
+    <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">
+      {stats.forks}
+    </div>
+    <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">
+      Forks
+    </div>
+  </div>
+
+  <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
+    <FaUsers className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]" />
+    <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">
+      {stats.followers.toLocaleString()}
+    </div>
+    <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">
+      Followers
+    </div>
+  </div>
+
+  <div className="flex flex-col items-center rounded-[8px] bg-[rgba(34,211,238,0.08)] px-2 py-3 text-center">
+    <FaBox className="mb-[0.35rem] text-[1.25rem] text-[var(--accent)]" />
+    <div className="text-[1.1rem] font-bold leading-[1.2] text-[var(--text)]">
+      {stats.repos}
+    </div>
+    <div className="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.05em] text-[var(--text-secondary)]">
+      Repos
+    </div>
+  </div>
+
+</div>
+
+
     </div>
   );
 };
@@ -390,7 +416,7 @@ const ContributionsCardItem = () => {
           <FiCode /> Contributions
         </h2>
         <a href={`https://github.com/mehedi-hasan1102`} target="_blank" rel="noopener noreferrer" className={VIEW_LINK}>
-          View on GitHub <span>→</span>
+          View on GitHub <FaArrowRight className="text-[var(--accent)]" />
         </a>
       </div>
       <div style={{ width: '100%', overflow: 'auto', marginTop: '1.5rem', position: 'relative', zIndex: 1 }}>
@@ -526,7 +552,7 @@ const DeveloperDashboard = () => {
           <div className={SECTION_HEADER}>
             <h2 className={SECTION_TITLE}>Recent Projects</h2>
             <a href="https://github.com/mehedi-hasan1102" target="_blank" rel="noopener noreferrer" className={VIEW_LINK}>
-              View all <span>→</span>
+              View all <FaArrowRight className="text-[var(--accent)]" />
             </a>
           </div>
           <div className={PROJECTS_GRID}>

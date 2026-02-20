@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FiDownload } from 'react-icons/fi';
+import { FaArrowLeft } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -419,10 +420,17 @@ export default function ProjectPage() {
     <div ref={pageRef} className="projectDetailsPage">
       {/* Back Button */}
       <div className="backSection">
-        <button onClick={() => router.back()} className="backLink" data-hero-animate>
-          ← Back to Portfolio
-        </button>
-      </div>
+  <button
+  onClick={() => router.back()}
+  className="group mt-16 inline-flex cursor-pointer items-center gap-2 rounded-[8px] border border-transparent bg-transparent px-0 py-0 font-['Inter',sans-serif] text-[0.95rem] font-medium text-[var(--accent)] transition-all duration-300 hover:-translate-x-[2px]"
+>
+  <FaArrowLeft
+    size={16}
+    className="transition-transform duration-300 group-hover:-translate-x-1"
+  />
+  Back to Portfolio
+</button>
+</div>
 
       {/* Hero Section */}
       <section className="heroSection">
