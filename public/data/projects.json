@@ -104,7 +104,7 @@
     "slug": "task-manager",
     "title": "Task Manager",
     "category": "FULL-STACK",
-    "description": "Responsive Task Management app with real-time updates, optimized state management, and robust validation.",
+    "description": "This is a responsive Task Management app designed to help users efficiently organize, track, and update their tasks in real-time. It offers an intuitive interface and ensures smooth task management, making productivity simple and effective.",
     "image": "/assets/images/projects/task.png",
     "screenshot1": "/assets/images/projects/task.png",
     "screenshot2": "/assets/images/projects/task.png",
