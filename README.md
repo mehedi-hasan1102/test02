@@ -1,4 +1,4 @@
-# Redict
+# Mehedi Web Redirector
 
 A lightweight Next.js application that redirects the home route (`/`) to:
 
