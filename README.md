@@ -67,4 +67,4 @@ To change the destination, update the URL in this file.
 ## Deployment
 
 Deploy as a standard Next.js app (for example on Vercel, VPS, or Docker).  
-Once deployed, requests to `/` will continue to redirect to the configured external URL.
+Once deployed, requests to `/` will continue to redirect to the configured external URL...
